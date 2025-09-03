@@ -1,7 +1,7 @@
 export const SITE_CONFIG = {
   name: "PRPS",
-  tagline: "your plan, your pace, keep showing",
-  description: "Program gym ramah pemula untuk bodybuilding dan powerlifting. Your plan, your pace, keep showing.",
+  tagline: "your plan, your pace, #KeepShowing",
+  description: "Program gym ramah pemula untuk bodybuilding dan powerlifting. Your plan, your pace, #KeepShowing.",
   url: "https://prps-landing.vercel.app",
   creator: "@prps_sport",
 }
