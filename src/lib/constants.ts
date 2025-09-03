@@ -7,9 +7,9 @@ export const SITE_CONFIG = {
 }
 
 export const SOCIAL_LINKS = {
-  tiktok: "https://tiktok.com/@prps_sport",
-  instagram: "https://instagram.com/prps_sport", 
-  youtube: "https://youtube.com/@prps_sport",
+  tiktok: "https://tiktok.com/@prps.sport",
+  instagram: "https://instagram.com/prps.sport", 
+  youtube: "https://youtube.com/@prps.sport",
 }
 
 export const PLAN_CATEGORIES = [

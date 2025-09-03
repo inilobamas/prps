@@ -26,11 +26,15 @@ export default function HomePage() {
               transition={{ duration: 0.8 }}
             >
               <h1 className="text-4xl font-bold tracking-tight text-foreground sm:text-6xl md:text-7xl">
-                Your plan.{" "}
+                Your plan. {" "}
                 <span className="text-gradient">Your pace.</span>
               </h1>
               <p className="mx-auto mt-6 max-w-2xl text-lg leading-8 text-muted-foreground sm:text-xl">
-                Program gym ramah pemula—mulai dari rumah atau powerlifting gym di Malang.
+                Olahraga jadi lebih mudah, dimanapun kamu mulai. #KeepShowing
+                {/* Program olahraga ramah pemula dengan panduan step-by-step, bisa diikuti kapanpun dan dimanapun. */}
+                {/* Program gym ramah pemula—mulai dari rumah atau powerlifting gym di Malang.
+                PRPS menghubungkanmu dengan program terbaik, ramah pemula. Mulai dari rumah hingga gym. */}
+                {/* —fitness, lari, boxing, hingga powerlifting—semua bisa disesuaikan dengan level dan gaya hidupmu. */}
               </p>
               <div className="mt-10 flex items-center justify-center gap-x-6">
                 <Button asChild size="lg" className="bg-green-500 hover:bg-green-600">
