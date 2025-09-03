@@ -26,8 +26,8 @@ export default function HomePage() {
               transition={{ duration: 0.8 }}
             >
               <h1 className="text-4xl font-bold tracking-tight text-foreground sm:text-6xl md:text-7xl">
-                Unlimited Workouts, Custom Plans, and More{" "}
-                {/* <span className="text-gradient">fit your life</span> */}
+                Programs that{" "}
+                <span className="text-gradient">fit your life</span>
               </h1>
               <p className="mx-auto mt-6 max-w-2xl text-lg leading-8 text-muted-foreground sm:text-xl">
                 Your plan, Your pace, #KeepShowing.

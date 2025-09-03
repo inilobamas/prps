@@ -58,7 +58,7 @@ export const FEATURED_PLANS: Plan[] = [
     environment: "Home or Gym",
     price: "$19",
     features: ["Full body strength", "Muscle building focus", "Progressive overload", "Video guides"],
-    href: "https://lynk.id/prps/powerbuilding-foundation",
+    href: "https://lynk.id/prps.sport/powerbuilding-foundation",
     tags: ["Popular"]
   },
   {
@@ -70,7 +70,7 @@ export const FEATURED_PLANS: Plan[] = [
     environment: "Gym",
     price: "$29",
     features: ["Split training", "Volume progression", "Advanced techniques", "Nutrition guide"],
-    href: "https://lynk.id/prps/push-pull-legs"
+    href: "https://lynk.id/prps.sport/push-pull-legs"
   },
   {
     id: "beginner-powerlifting",
@@ -81,7 +81,7 @@ export const FEATURED_PLANS: Plan[] = [
     environment: "Home or Gym",
     price: "$15",
     features: ["Big 3 focus", "Form tutorials", "Strength building", "Minimal equipment"],
-    href: "https://lynk.id/prps/beginner-powerlifting"
+    href: "https://lynk.id/prps.sport/beginner-powerlifting"
   }
 ]
 
@@ -96,7 +96,7 @@ export const ALL_PLANS: Plan[] = [
     environment: "Gym", 
     price: "$35",
     features: ["Muscle isolation", "High volume", "Aesthetic focus", "Supplement guide"],
-    href: "https://lynk.id/prps/bodybuilding-split"
+    href: "https://lynk.id/prps.sport/bodybuilding-split"
   },
   {
     id: "home-strength",
@@ -107,7 +107,7 @@ export const ALL_PLANS: Plan[] = [
     environment: "Home",
     price: "$18",
     features: ["Bodyweight focused", "Minimal equipment", "Space efficient", "Family friendly"],
-    href: "https://lynk.id/prps/home-strength"
+    href: "https://lynk.id/prps.sport/home-strength"
   },
   {
     id: "powerlifting-peaking",
@@ -118,7 +118,7 @@ export const ALL_PLANS: Plan[] = [
     environment: "Gym",
     price: "$45",
     features: ["Competition prep", "1RM focus", "Peaking protocol", "Recovery strategies"],
-    href: "https://lynk.id/prps/powerlifting-peaking"
+    href: "https://lynk.id/prps.sport/powerlifting-peaking"
   }
 ]
 
