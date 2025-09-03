@@ -1,5 +1,3 @@
-'use client';
-
 import { useEffect, useState } from 'react';
 import { useRouter } from 'next/navigation';
 import { Button } from '@/components/ui/button';
@@ -23,47 +21,14 @@ import { toast } from 'sonner';
 import Link from 'next/link';
 
 interface WorkoutPageProps {
-  params: { slug: string; day: string };
+  params: Promise<{ slug: string; day: string }>;
 }
 
-function RestTimer({ restString, onComplete }: { restString: string; onComplete?: () => void }) {
-  const restSeconds = parseRestToSeconds(restString);
-  const { seconds, isRunning, start, stop, reset, formatTime, isFinished } = useTimer(restSeconds);
+'use client';
 
-  useEffect(() => {
-    if (isFinished && onComplete) {
-      onComplete();
-    }
-  }, [isFinished, onComplete]);
-
-  return (
-    <div className="flex items-center gap-2">
-      <Button
-        variant={isRunning ? "secondary" : "outline"}
-        size="sm"
-        onClick={isRunning ? stop : start}
-      >
-        {isRunning ? <Pause className="h-4 w-4" /> : <Play className="h-4 w-4" />}
-      </Button>
-      
-      <span className={`font-mono text-sm ${isFinished ? 'text-green-500' : ''}`}>
-        {formatTime()}
-      </span>
-      
-      {(isRunning || seconds !== restSeconds) && (
-        <Button variant="ghost" size="sm" onClick={() => reset()}>
-          <RotateCcw className="h-4 w-4" />
-        </Button>
-      )}
-      
-      <span className="text-xs text-muted-foreground">/ {formatDuration(restSeconds)}</span>
-    </div>
-  );
-}
-
-export default function WorkoutPage({ params }: WorkoutPageProps) {
+function WorkoutPageClient({ slug, day }: { slug: string; day: string }) {
   const router = useRouter();
-  const dayNumber = parseInt(params.day);
+  const dayNumber = parseInt(day);
   const [program, setProgram] = useState<Program | null>(null);
   const [showFinishDialog, setShowFinishDialog] = useState(false);
   const [elapsedTime, setElapsedTime] = useState(0);
@@ -80,10 +45,10 @@ export default function WorkoutPage({ params }: WorkoutPageProps) {
     updateExerciseNotes,
     startWorkout,
     finishWorkout,
-  } = useWorkout(params.slug, dayNumber);
+  } = useWorkout(slug, dayNumber);
 
   useEffect(() => {
-    const foundProgram = PROGRAMS.find(p => p.slug === params.slug);
+    const foundProgram = PROGRAMS.find(p => p.slug === slug);
     if (!foundProgram) {
       router.push('/app');
       return;
@@ -91,12 +56,12 @@ export default function WorkoutPage({ params }: WorkoutPageProps) {
 
     const workoutDay = foundProgram.days.find(d => d.day === dayNumber);
     if (!workoutDay) {
-      router.push(`/app/workout/${params.slug}`);
+      router.push(`/app/workout/${slug}`);
       return;
     }
 
     setProgram(foundProgram);
-  }, [params.slug, dayNumber, router]);
+  }, [slug, dayNumber, router]);
 
   useEffect(() => {
     if (dayLog?.startedAt && !startTime) {
@@ -176,7 +141,7 @@ export default function WorkoutPage({ params }: WorkoutPageProps) {
       {/* Header */}
       <div className="flex items-center gap-4">
         <Button variant="outline" size="sm" asChild>
-          <Link href={`/app/workout/${params.slug}`}>
+          <Link href={`/app/workout/${slug}`}>
             <ArrowLeft className="h-4 w-4 mr-2" />
             Back
           </Link>
@@ -379,4 +344,44 @@ export default function WorkoutPage({ params }: WorkoutPageProps) {
       </div>
     </div>
   );
+}
+
+function RestTimer({ restString, onComplete }: { restString: string; onComplete?: () => void }) {
+  const restSeconds = parseRestToSeconds(restString);
+  const { seconds, isRunning, start, stop, reset, formatTime, isFinished } = useTimer(restSeconds);
+
+  useEffect(() => {
+    if (isFinished && onComplete) {
+      onComplete();
+    }
+  }, [isFinished, onComplete]);
+
+  return (
+    <div className="flex items-center gap-2">
+      <Button
+        variant={isRunning ? "secondary" : "outline"}
+        size="sm"
+        onClick={isRunning ? stop : start}
+      >
+        {isRunning ? <Pause className="h-4 w-4" /> : <Play className="h-4 w-4" />}
+      </Button>
+      
+      <span className={`font-mono text-sm ${isFinished ? 'text-green-500' : ''}`}>
+        {formatTime()}
+      </span>
+      
+      {(isRunning || seconds !== restSeconds) && (
+        <Button variant="ghost" size="sm" onClick={() => reset()}>
+          <RotateCcw className="h-4 w-4" />
+        </Button>
+      )}
+      
+      <span className="text-xs text-muted-foreground">/ {formatDuration(restSeconds)}</span>
+    </div>
+  );
+}
+
+export default async function WorkoutPage({ params }: WorkoutPageProps) {
+  const { slug, day } = await params;
+  return <WorkoutPageClient slug={slug} day={day} />;
 }
