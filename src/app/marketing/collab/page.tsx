@@ -39,15 +39,44 @@ export default function CollabPage() {
     setFormData(prev => ({ ...prev, [field]: e.target.value }))
   }
 
+  const formatWhatsAppMessage = (data: FormData) => {
+    const message = `Hallo Admin PRPS
+
+*PROPOSAL KOLABORASI*
+
+👤 *Nama:* ${data.name}
+📧 *Email:* ${data.email}
+💼 *Peran:* ${data.role}
+📍 *Kota:* ${data.city}
+${data.socialUrls ? `🔗 *Media Sosial:* ${data.socialUrls}` : ''}
+
+📝 *Pesan:*
+${data.message}
+
+Terima kasih! 🤝`
+    
+    return encodeURIComponent(message)
+  }
+
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault()
     setIsSubmitting(true)
 
-    // Simulate API submission
-    setTimeout(() => {
-      console.log("Collab form submission:", formData)
+    try {
+      // Format WhatsApp message
+      const whatsappMessage = formatWhatsAppMessage(formData)
+      const whatsappUrl = `https://api.whatsapp.com/send?phone=6285156226605&text=${whatsappMessage}`
+      
+      // Track submission
       trackCollabSubmit()
-      toast.success("Terima kasih! Kami akan segera menghubungi kamu. 🤝")
+      
+      // Open WhatsApp
+      window.open(whatsappUrl, '_blank')
+      
+      // Show success message
+      toast.success("Proposal dikirim ke WhatsApp! 📱")
+      
+      // Reset form
       setFormData({
         name: "",
         email: "",
@@ -56,8 +85,11 @@ export default function CollabPage() {
         socialUrls: "",
         message: ""
       })
+    } catch (error) {
+      toast.error("Terjadi kesalahan. Silakan coba lagi.")
+    } finally {
       setIsSubmitting(false)
-    }, 1500)
+    }
   }
 
   return (
