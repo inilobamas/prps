@@ -47,7 +47,7 @@ export default function CollabPage() {
     setTimeout(() => {
       console.log("Collab form submission:", formData)
       trackCollabSubmit()
-      toast.success("Thanks for your interest! We&apos;ll be in touch soon. 🤝")
+      toast.success("Terima kasih! Kami akan segera menghubungi kamu. 🤝")
       setFormData({
         name: "",
         email: "",
@@ -67,10 +67,10 @@ export default function CollabPage() {
           {/* Header */}
           <div className="text-center">
             <h1 className="text-4xl font-bold tracking-tight text-foreground sm:text-5xl">
-              Partner with PRPS
+              Kolaborasi dengan PRPS
             </h1>
             <p className="mt-4 text-lg text-muted-foreground">
-              Join us in building Indonesia&apos;s strongest fitness community
+              Mari bergabung membangun komunitas fitness terkuat di Indonesia
             </p>
           </div>
 
@@ -79,18 +79,18 @@ export default function CollabPage() {
             {[
               {
                 icon: <Users className="h-8 w-8" />,
-                title: "Creator Collaborations",
-                description: "Content partnerships, co-branded programs, revenue sharing opportunities"
+                title: "Kolaborasi Kreator",
+                description: "Partnership konten, co-branded program, revenue sharing yang menguntungkan"
               },
               {
                 icon: <MapPin className="h-8 w-8" />,
-                title: "Gym Partnerships",
-                description: "Equipment trials, member discounts, training workshops for your staff"
+                title: "Partnership Gym",
+                description: "Trial equipment, diskon member, workshop training untuk staff gym kamu"
               },
               {
                 icon: <TrendingUp className="h-8 w-8" />,
-                title: "Growth Together", 
-                description: "Cross-promotion, community building, shared expertise and resources"
+                title: "Berkembang Bersama", 
+                description: "Cross-promotion, membangun komunitas, sharing expertise dan resources"
               }
             ].map((benefit, index) => (
               <motion.div
@@ -124,9 +124,9 @@ export default function CollabPage() {
           >
             <Card className="mx-auto max-w-2xl">
               <CardHeader>
-                <CardTitle className="text-center text-2xl">Let&apos;s Connect</CardTitle>
+                <CardTitle className="text-center text-2xl">Mari Berkolaborasi</CardTitle>
                 <p className="text-center text-muted-foreground">
-                  Tell us about yourself and how we can work together
+                  Ceritakan tentang diri kamu dan bagaimana kita bisa bekerja sama
                 </p>
               </CardHeader>
               <CardContent>
@@ -134,14 +134,14 @@ export default function CollabPage() {
                   <div className="grid gap-4 md:grid-cols-2">
                     <div className="space-y-2">
                       <label htmlFor="name" className="text-sm font-medium">
-                        Name <span className="text-red-500">*</span>
+                        Nama <span className="text-red-500">*</span>
                       </label>
                       <Input
                         id="name"
                         value={formData.name}
                         onChange={handleInputChange("name")}
                         required
-                        placeholder="Your full name"
+                        placeholder="Nama lengkap kamu"
                       />
                     </div>
                     <div className="space-y-2">
@@ -162,7 +162,7 @@ export default function CollabPage() {
                   <div className="grid gap-4 md:grid-cols-2">
                     <div className="space-y-2">
                       <label htmlFor="role" className="text-sm font-medium">
-                        Role <span className="text-red-500">*</span>
+                        Peran <span className="text-red-500">*</span>
                       </label>
                       <select
                         id="role"
@@ -171,17 +171,17 @@ export default function CollabPage() {
                         required
                         className="flex h-10 w-full rounded-md border border-input bg-background px-3 py-2 text-sm ring-offset-background placeholder:text-muted-foreground focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2"
                       >
-                        <option value="">Select your role</option>
+                        <option value="">Pilih peran kamu</option>
                         <option value="Creator">Content Creator</option>
-                        <option value="Gym Owner">Gym Owner</option>
+                        <option value="Gym Owner">Pemilik Gym</option>
                         <option value="Trainer">Personal Trainer</option>
                         <option value="Influencer">Fitness Influencer</option>
-                        <option value="Other">Other</option>
+                        <option value="Other">Lainnya</option>
                       </select>
                     </div>
                     <div className="space-y-2">
                       <label htmlFor="city" className="text-sm font-medium">
-                        City <span className="text-red-500">*</span>
+                        Kota <span className="text-red-500">*</span>
                       </label>
                       <Input
                         id="city"
@@ -195,26 +195,26 @@ export default function CollabPage() {
 
                   <div className="space-y-2">
                     <label htmlFor="socialUrls" className="text-sm font-medium">
-                      Social Media URLs
+                      Link Media Sosial
                     </label>
                     <Input
                       id="socialUrls"
                       value={formData.socialUrls}
                       onChange={handleInputChange("socialUrls")}
-                      placeholder="Instagram, TikTok, YouTube links (comma separated)"
+                      placeholder="Link Instagram, TikTok, YouTube (pisah dengan koma)"
                     />
                   </div>
 
                   <div className="space-y-2">
                     <label htmlFor="message" className="text-sm font-medium">
-                      Message <span className="text-red-500">*</span>
+                      Pesan <span className="text-red-500">*</span>
                     </label>
                     <Textarea
                       id="message"
                       value={formData.message}
                       onChange={handleInputChange("message")}
                       required
-                      placeholder="Tell us about your audience, your gym, or collaboration ideas..."
+                      placeholder="Ceritakan tentang audience kamu, gym kamu, atau ide kolaborasi..."
                       rows={4}
                     />
                   </div>
@@ -224,7 +224,7 @@ export default function CollabPage() {
                     disabled={isSubmitting}
                     className="w-full bg-green-500 hover:bg-green-600"
                   >
-                    {isSubmitting ? "Sending..." : "Send Partnership Request"}
+                    {isSubmitting ? "Mengirim..." : "Kirim Proposal Kolaborasi"}
                   </Button>
                 </form>
               </CardContent>
@@ -234,7 +234,7 @@ export default function CollabPage() {
           {/* Additional Info */}
           <div className="mt-12 text-center">
             <p className="text-sm text-muted-foreground">
-              Priority given to creators and gyms in Malang & surrounding areas
+              Prioritas untuk kreator dan gym di Malang & sekitarnya
             </p>
             <div className="mt-4 flex justify-center gap-2">
               <Badge variant="secondary">Malang</Badge>

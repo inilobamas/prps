@@ -34,7 +34,7 @@ export default function HomePage() {
               </p>
               <div className="mt-10 flex items-center justify-center gap-x-6">
                 <Button asChild size="lg" className="bg-green-500 hover:bg-green-600">
-                  <Link href="/plans">
+                  <Link href="/marketing/plans">
                     Lihat Program
                     <ArrowRight className="ml-2 h-4 w-4" />
                   </Link>
@@ -196,7 +196,7 @@ export default function HomePage() {
             </p>
             <div className="mt-8">
               <Button asChild size="lg" className="bg-green-500 hover:bg-green-600">
-                <Link href="/collab">
+                <Link href="/marketing/collab">
                   Bergabung sebagai Partner
                   <ArrowRight className="ml-2 h-4 w-4" />
                 </Link>

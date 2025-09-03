@@ -10,8 +10,8 @@ import { Menu } from "lucide-react"
 
 const NAV_ITEMS = [
   { href: "/", label: "Beranda" },
-  { href: "/plans", label: "Program" }, 
-  { href: "/collab", label: "Kolaborasi" }
+  { href: "/marketing/plans", label: "Program" }, 
+  { href: "/marketing/collab", label: "Kolaborasi" }
 ]
 
 export function SiteHeader() {
@@ -41,7 +41,7 @@ export function SiteHeader() {
           <div className="flex items-center gap-2">
             <ThemeToggle />
             <Button asChild size="sm" className="hidden md:inline-flex bg-green-500 hover:bg-green-600">
-              <Link href="/plans">Lihat Program</Link>
+              <Link href="/marketing/plans">Lihat Program</Link>
             </Button>
 
             {/* Mobile Navigation */}
@@ -65,7 +65,7 @@ export function SiteHeader() {
                     </Link>
                   ))}
                   <Button asChild className="mt-4 bg-green-500 hover:bg-green-600">
-                    <Link href="/plans" onClick={() => setOpen(false)}>
+                    <Link href="/marketing/plans" onClick={() => setOpen(false)}>
                       Lihat Program
                     </Link>
                   </Button>

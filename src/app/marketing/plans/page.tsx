@@ -53,10 +53,10 @@ export default function PlansPage() {
       <Container>
         <div className="mx-auto max-w-2xl text-center">
           <h1 className="text-4xl font-bold tracking-tight text-foreground sm:text-5xl">
-            Choose Your Program
+            Pilih Program Kamu
           </h1>
           <p className="mt-4 text-lg text-muted-foreground">
-            Find the perfect workout plan for your goals and lifestyle
+            Temukan program latihan yang cocok untuk goal dan lifestyle kamu
           </p>
         </div>
 
@@ -70,7 +70,7 @@ export default function PlansPage() {
                 size="sm"
                 onClick={() => updateFilter("level", "All")}
               >
-                All Levels
+                Semua Level
               </Button>
               {PLAN_CATEGORIES.map(level => (
                 <Button
@@ -91,7 +91,7 @@ export default function PlansPage() {
                 size="sm"
                 onClick={() => updateFilter("schedule", "All")}
               >
-                Any Schedule
+                Jadwal Apa Saja
               </Button>
               {PLAN_SCHEDULES.map(schedule => (
                 <Button
@@ -112,7 +112,7 @@ export default function PlansPage() {
                 size="sm"
                 onClick={() => updateFilter("environment", "All")}
               >
-                Any Location
+                Lokasi Apa Saja
               </Button>
               {PLAN_ENVIRONMENTS.map(env => (
                 <Button
@@ -128,7 +128,7 @@ export default function PlansPage() {
 
             {(filters.level !== "All" || filters.schedule !== "All" || filters.environment !== "All") && (
               <Button variant="ghost" size="sm" onClick={clearFilters}>
-                Clear Filters
+                Hapus Filter
               </Button>
             )}
           </div>
@@ -137,7 +137,7 @@ export default function PlansPage() {
         {/* Results */}
         <div className="mt-12">
           <p className="text-center text-sm text-muted-foreground mb-8">
-            Showing {filteredPlans.length} of {ALL_PLANS.length} plans
+            Menampilkan {filteredPlans.length} dari {ALL_PLANS.length} program
           </p>
           
           <div className="grid gap-8 md:grid-cols-2 lg:grid-cols-3">
@@ -157,10 +157,10 @@ export default function PlansPage() {
           {filteredPlans.length === 0 && (
             <div className="text-center py-12">
               <p className="text-muted-foreground">
-                No plans match your current filters. Try adjusting your selection.
+                Tidak ada program yang cocok dengan filter. Coba sesuaikan pilihan kamu.
               </p>
               <Button variant="outline" onClick={clearFilters} className="mt-4">
-                Clear Filters
+                Hapus Filter
               </Button>
             </div>
           )}
