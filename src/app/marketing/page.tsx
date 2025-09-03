@@ -102,7 +102,7 @@ export default function HomePage() {
                 title: "Komunitas Supportive",
                 description: "Kamu nggak sendirian. Ada komunitas yang bikin semangat terus #KeepShowing.",
                 // color: "text-purple-500"
-              },
+              }
             ].map((prop, index) => (
               <motion.div
                 key={index}
@@ -113,7 +113,7 @@ export default function HomePage() {
               >
                 <Card className="h-full text-center hover:shadow-lg transition-all duration-300 group">
                   <CardHeader>
-                    <div className={`mx-auto mb-4 flex h-16 w-16 items-center justify-center rounded-2xl bg-white dark:bg-slate-800 ${prop.color} group-hover:scale-110 transition-transform duration-300 shadow-lg`}>
+                    <div className={`mx-auto mb-4 flex h-16 w-16 items-center justify-center rounded-2xl bg-green-100 text-green-600 dark:bg-green-900 dark:text-green-400`}>
                       {prop.icon}
                     </div>
                     <CardTitle className="text-xl font-bold">{prop.title}</CardTitle>
