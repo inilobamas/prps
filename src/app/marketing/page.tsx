@@ -10,7 +10,7 @@ import { Section } from "@/components/Section"
 import { PlanCard } from "@/components/PlanCard"
 import { StatsRow } from "@/components/StatsRow"
 import { FEATURED_PLANS, TESTIMONIALS, FAQ_ITEMS, SOCIAL_LINKS } from "@/lib/constants"
-import { ArrowRight, Dumbbell, Users, TrendingUp, Star } from "lucide-react"
+import { ArrowRight, Star, Heart, Target, Shield, Zap, UserCheck, MapPin } from "lucide-react"
 
 export default function HomePage() {
   return (
@@ -59,30 +59,50 @@ export default function HomePage() {
         <Container>
           <div className="mx-auto max-w-2xl text-center">
             <h2 className="text-3xl font-bold tracking-tight text-foreground sm:text-4xl">
-              Kenapa PRPS
+              Kenapa PRPS?
             </h2>
             <p className="mt-4 text-lg text-muted-foreground">
-              Tiga alasan kenapa program PRPS cocok untuk pemula
+              Lima alasan kenapa PRPS jadi pilihan terbaik untuk journey fitness kamu
             </p>
           </div>
           
-          <div className="mx-auto mt-16 grid max-w-5xl grid-cols-1 gap-8 md:grid-cols-3">
+          <div className="mx-auto mt-16 grid max-w-6xl grid-cols-1 gap-6 md:grid-cols-2 lg:grid-cols-3">
             {[
               {
-                icon: <Dumbbell className="h-8 w-8" />,
-                title: "Pemula-friendly",
-                description: "Fokus teknik dasar, progres realistis, tanpa intimidasi"
+                icon: <Heart className="h-8 w-8" />,
+                title: "Ramah Pemula",
+                description: "PRPS dirancang untuk kamu yang baru mulai olahraga—program jelas, step-by-step, tanpa bikin bingung.",
+                // color: "text-red-500"
               },
               {
-                icon: <Users className="h-8 w-8" />,
-                title: "Terstruktur & fleksibel",
-                description: "Rencana mingguan 3–4x latihan, bisa di rumah atau gym"
+                icon: <Target className="h-8 w-8" />,
+                title: "Pilihan Beragam",
+                description: "Dari gym, lari, hingga boxing—temukan program sesuai tujuanmu: fat loss, strength, atau sekadar lebih sehat.",
+                // color: "text-blue-500"
               },
               {
-                icon: <TrendingUp className="h-8 w-8" />,
-                title: "Harga transparan",
-                description: "Bayar sekali, akses materi lengkap (video, PDF, tracker)"
-              }
+                icon: <Shield className="h-8 w-8" />,
+                title: "PT Terpercaya",
+                description: "Program dibuat oleh trainer berpengalaman, jadi kamu nggak asal ikut jadwal random dari internet.",
+                // color: "text-green-500"
+              },
+              {
+                icon: <Zap className="h-8 w-8" />,
+                title: "Mudah Diikuti",
+                description: "Cukup isi profilmu (berat badan, 1RM, dll.), sistem bantu hitung target beban & progres sesuai kemampuanmu.",
+                // color: "text-yellow-500"
+              },
+              {
+                icon: <MapPin className="h-8 w-8" />,
+                title: "Akses Fleksibel",
+                description: "Bisa mulai dari rumah, gym, atau sasana favoritmu, sesuai gaya hidupmu."
+              },
+              {
+                icon: <UserCheck className="h-8 w-8" />,
+                title: "Komunitas Supportive",
+                description: "Kamu nggak sendirian. Ada komunitas yang bikin semangat terus #KeepShowing.",
+                // color: "text-purple-500"
+              },
             ].map((prop, index) => (
               <motion.div
                 key={index}
@@ -91,15 +111,15 @@ export default function HomePage() {
                 viewport={{ once: true }}
                 transition={{ delay: index * 0.2 }}
               >
-                <Card className="h-full text-center">
+                <Card className="h-full text-center hover:shadow-lg transition-all duration-300 group">
                   <CardHeader>
-                    <div className="mx-auto mb-4 flex h-16 w-16 items-center justify-center rounded-2xl bg-green-100 text-green-600 dark:bg-green-900 dark:text-green-400">
+                    <div className={`mx-auto mb-4 flex h-16 w-16 items-center justify-center rounded-2xl bg-white dark:bg-slate-800 ${prop.color} group-hover:scale-110 transition-transform duration-300 shadow-lg`}>
                       {prop.icon}
                     </div>
-                    <CardTitle className="text-xl">{prop.title}</CardTitle>
+                    <CardTitle className="text-xl font-bold">{prop.title}</CardTitle>
                   </CardHeader>
                   <CardContent>
-                    <p className="text-muted-foreground">{prop.description}</p>
+                    <p className="text-muted-foreground leading-relaxed">{prop.description}</p>
                   </CardContent>
                 </Card>
               </motion.div>

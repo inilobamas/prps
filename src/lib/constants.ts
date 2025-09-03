@@ -372,10 +372,10 @@ export const FAQ_ITEMS = [
     question: "Bagaimana akses setelah bayar?",
     answer: "Setelah pembayaran via Lynk.id, kamu langsung dapat link untuk download materi (PDF, video, tracker)."
   },
-  {
-    question: "Kalau tidak cocok, bisa refund?", 
-    answer: "Jika belum mengunduh materi, bisa ajukan refund dalam 7 hari sesuai kebijakan Lynk.id. Hubungi support@lynk.id."
-  },
+  // {
+  //   question: "Kalau tidak cocok, bisa refund?", 
+  //   answer: "Jika belum mengunduh materi, bisa ajukan refund dalam 7 hari sesuai kebijakan Lynk.id. Hubungi support@lynk.id."
+  // },
   {
     question: "Jadwalnya fleksibel?",
     answer: "Sangat fleksibel! Program bisa diadaptasi sesuai waktu luang. Ada panduan swap workout dan rest day adjustment."
