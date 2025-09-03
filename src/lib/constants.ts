@@ -32,9 +32,64 @@ export const PLAN_ENVIRONMENTS = [
   "Home or Gym"
 ] as const
 
+export const SPORT_CATEGORIES = [
+  "Powerlifting",
+  "Bodybuilding", 
+  "Running",
+  "Boxing",
+  "Athletic Performance"
+] as const
+
 export type PlanCategory = typeof PLAN_CATEGORIES[number]
 export type PlanSchedule = typeof PLAN_SCHEDULES[number]
 export type PlanEnvironment = typeof PLAN_ENVIRONMENTS[number]
+export type SportCategory = typeof SPORT_CATEGORIES[number]
+
+export interface PersonalTrainer {
+  name: string
+  credentials: string[]
+  specialization: string[]
+  experience: string
+  image?: string
+}
+
+export const TRAINERS: PersonalTrainer[] = [
+  {
+    name: "Coach Andi Prasetya",
+    credentials: ["Certified Strength & Conditioning Specialist (CSCS)", "Powerlifting Coach Level 2"],
+    specialization: ["Powerlifting", "Strength Training", "Competition Prep"],
+    experience: "8 tahun coaching powerlifting & strength training. Alumni juara Jatim Powerlifting Championship.",
+    image: "/images/trainer-andi.jpg"
+  },
+  {
+    name: "Coach Sari Indrawati", 
+    credentials: ["Certified Personal Trainer (CPT)", "Bodybuilding Judge IFBB"],
+    specialization: ["Bodybuilding", "Aesthetic Training", "Contest Prep"],
+    experience: "6 tahun experience bodybuilding coaching. Mantan atlet bikini fitness nasional.",
+    image: "/images/trainer-sari.jpg"
+  },
+  {
+    name: "Coach Rio Mahendra",
+    credentials: ["Running Coach Certified", "Marathon Finisher (Sub 3:00)"],
+    specialization: ["Distance Running", "Marathon Training", "Endurance Coaching"],
+    experience: "10 tahun coaching runners dari 5K sampai ultra marathon. PB marathon 2:58.",
+    image: "/images/trainer-rio.jpg"
+  },
+  {
+    name: "Coach Dimas Putra",
+    credentials: ["Boxing Coach License", "Muay Thai Instructor"],
+    specialization: ["Boxing", "Combat Sports", "Self Defense"],
+    experience: "7 tahun coaching boxing & muay thai. Mantan atlet tinju PON Jawa Timur.",
+    image: "/images/trainer-dimas.jpg"
+  },
+  {
+    name: "Coach Fitri Ramadhani",
+    credentials: ["Speed & Agility Specialist", "Athletic Performance Coach"],
+    specialization: ["Speed Training", "Athletic Performance", "Sports Conditioning"],
+    experience: "5 tahun coaching athletes dari berbagai sport. Spesialis speed & power development.",
+    image: "/images/trainer-fitri.jpg"
+  }
+]
 
 export interface WorkoutWeek {
   week: number
@@ -69,6 +124,8 @@ export interface Plan {
   targetAudience?: string[]
   goals?: string[]
   workoutOverview?: WorkoutWeek[]
+  sport: SportCategory
+  trainer: PersonalTrainer
 }
 
 export const FEATURED_PLANS: Plan[] = [
@@ -83,6 +140,8 @@ export const FEATURED_PLANS: Plan[] = [
     features: ["Teknik SBD advanced", "Peaking protocol", "RPE & percentage training", "Competition prep"],
     href: "https://lynk.id/prps.sport/q7mn77dz3w7m",
     tags: ["Best Seller"],
+    sport: "Powerlifting",
+    trainer: TRAINERS[0],
     description: "Program 12 minggu powerlifting serius untuk master Squat, Bench Press, dan Deadlift. Dari strength building sampai peaking untuk kompetisi.",
     image: "/images/sbd-powerlifting.jpg",
     equipment: ["Barbell olympik", "Squat rack", "Bench press", "Plates", "Belt powerlifting"],
@@ -130,6 +189,8 @@ export const FEATURED_PLANS: Plan[] = [
     features: ["Muscle isolation focus", "High volume training", "Aesthetic sculpting", "Nutrition & supplement guide"],
     href: "https://lynk.id/prps.sport/q7mn77dz3w7m",
     tags: ["Popular"],
+    sport: "Bodybuilding",
+    trainer: TRAINERS[1],
     description: "Program 12 minggu bodybuilding aesthetic untuk sculpt physique yang proporsional. Focus pada muscle definition, symmetry, dan visual impact.",
     image: "/images/bodybuilding-aesthetic.jpg",
     equipment: ["Full gym access", "Dumbbells", "Cable machine", "Barbells", "Preacher bench"],
@@ -165,6 +226,8 @@ export const FEATURED_PLANS: Plan[] = [
     price: "Rp 299.000",
     features: ["Progressive mileage", "Speed work sessions", "Recovery protocols", "Race day strategy"],
     href: "https://lynk.id/prps.sport/q7mn77dz3w7m",
+    sport: "Running",
+    trainer: TRAINERS[2],
     description: "Program 16 minggu comprehensive untuk finish marathon dengan waktu yang optimal. Structured training dari base building sampai peak performance.",
     image: "/images/marathon-training.jpg",
     equipment: ["Running shoes", "GPS watch/phone", "Comfortable gear", "Water bottle & fuel"],
@@ -199,6 +262,8 @@ export const FEATURED_PLANS: Plan[] = [
     price: "Rp 249.000",
     features: ["Basic boxing technique", "Cardio conditioning", "Shadowboxing drills", "Heavy bag combinations"],
     href: "https://lynk.id/prps.sport/q7mn77dz3w7m",
+    sport: "Boxing",
+    trainer: TRAINERS[3],
     description: "Program 8 minggu boxing fundamentals yang fun dan challenging. Perfect untuk cardio, stress relief, dan build confidence lewat martial arts.",
     image: "/images/boxing-fundamentals.jpg",
     equipment: ["Boxing gloves", "Hand wraps", "Heavy bag (opsional)", "Jump rope", "Timer app"],
@@ -234,6 +299,8 @@ export const FEATURED_PLANS: Plan[] = [
     price: "Rp 349.000",
     features: ["Sprint technique", "Explosive power", "Plyometric training", "Speed endurance"],
     href: "https://lynk.id/prps.sport/q7mn77dz3w7m",
+    sport: "Athletic Performance",
+    trainer: TRAINERS[4],
     description: "Program 10 minggu untuk develop kecepatan maksimal dan power. Khusus untuk athletes yang butuh speed advantage di sport mereka.",
     image: "/images/sprinter-speed.jpg",
     equipment: ["Track/open field", "Barbell", "Plyometric box", "Agility ladder", "Resistance bands"],
@@ -261,156 +328,7 @@ export const FEATURED_PLANS: Plan[] = [
   }
 ]
 
-export const ALL_PLANS: Plan[] = [
-  ...FEATURED_PLANS,
-  {
-    id: "bodybuilding-aesthetic",
-    title: "Bodybuilding Aesthetic Split",
-    level: "Intermediate",
-    durationWeeks: 12,
-    daysPerWeek: "5-6x/minggu, 60-75 menit",
-    environment: "Gym", 
-    price: "Rp 399.000",
-    features: ["Muscle isolation focus", "High volume training", "Aesthetic sculpting", "Nutrition & supp guide"],
-    href: "https://lynk.id/prps.sport/q7mn77dz3w7m",
-    description: "Program 12 minggu khusus bodybuilding aesthetic. Focus building muscle mass, definition, dan proporsi tubuh yang ideal dengan split training advanced.",
-    image: "/images/bodybuilding-aesthetic.jpg",
-    equipment: ["Full gym access", "Dumbbells", "Cable machine", "Barbells", "Bench adjustable"],
-    targetAudience: ["Sudah ada base strength", "Goal aesthetic & massa otot", "Komit 5-6x/minggu", "Mau serius bodybuilding"],
-    goals: ["Muscle mass & definition", "Proporsi tubuh ideal", "Strength endurance", "Competition ready physique"],
-    workoutOverview: [
-      {
-        week: 1,
-        focus: "Muscle Activation & Volume",
-        workouts: [
-          {
-            day: 1,
-            name: "Chest & Triceps",
-            exercises: [
-              { name: "Barbell Bench Press", sets: "4", reps: "8-10", rest: "2-3 min", notes: "Focus on muscle contraction" },
-              { name: "Incline Dumbbell Press", sets: "4", reps: "10-12", rest: "90s", notes: "Upper chest focus" },
-              { name: "Dumbbell Flyes", sets: "3", reps: "12-15", rest: "60s", notes: "Stretch & squeeze" },
-              { name: "Dips", sets: "3", reps: "10-15", rest: "90s", notes: "Full range of motion" },
-              { name: "Tricep Pushdown", sets: "4", reps: "12-15", rest: "60s", notes: "Strict form" }
-            ]
-          }
-        ]
-      }
-    ]
-  },
-  {
-    id: "marathon-runner",
-    title: "Marathon Training Program",
-    level: "Intermediate",
-    durationWeeks: 16,
-    daysPerWeek: "5-6x/minggu, 45-90 menit",
-    environment: "Home",
-    price: "Rp 299.000",
-    features: ["Progressive mileage", "Speed work", "Recovery protocols", "Nutrition timing"],
-    href: "https://lynk.id/prps.sport/q7mn77dz3w7m",
-    description: "Program 16 minggu comprehensive untuk persiapan marathon. Dari base building sampai peak mileage dengan structured training yang aman dan efektif.",
-    image: "/images/marathon-training.jpg",
-    equipment: ["Running shoes", "Stopwatch/GPS watch", "Comfortable running attire", "Water bottle"],
-    targetAudience: ["Sudah bisa lari 10K", "Target marathon dalam 6 bulan", "Komit training 5-6x/minggu", "Mau improve endurance"],
-    goals: ["Complete marathon distance", "Improve aerobic capacity", "Injury prevention", "Optimal race time"],
-    workoutOverview: [
-      {
-        week: 1,
-        focus: "Base Building Phase",
-        workouts: [
-          {
-            day: 1,
-            name: "Easy Run",
-            exercises: [
-              { name: "Easy Pace Run", sets: "1", reps: "5-6 km", rest: "-", notes: "Conversational pace, Zone 2" },
-              { name: "Dynamic Warm-up", sets: "1", reps: "10 min", rest: "-", notes: "Leg swings, high knees" },
-              { name: "Cool-down Stretch", sets: "1", reps: "10 min", rest: "-", notes: "Focus calves & hamstrings" }
-            ]
-          },
-          {
-            day: 2,
-            name: "Tempo Run",
-            exercises: [
-              { name: "Warm-up Jog", sets: "1", reps: "1.5 km", rest: "-", notes: "Easy pace" },
-              { name: "Tempo Run", sets: "1", reps: "3 km", rest: "-", notes: "Comfortably hard pace" },
-              { name: "Cool-down Jog", sets: "1", reps: "1 km", rest: "-", notes: "Easy pace" }
-            ]
-          }
-        ]
-      }
-    ]
-  },
-  {
-    id: "boxing-fundamentals",
-    title: "Boxing Fundamentals",
-    level: "Pemula",
-    durationWeeks: 8,
-    daysPerWeek: "3-4x/minggu, 45-60 menit",
-    environment: "Home or Gym",
-    price: "Rp 249.000",
-    features: ["Basic boxing technique", "Cardio conditioning", "Shadowboxing", "Heavy bag workout"],
-    href: "https://lynk.id/prps.sport/q7mn77dz3w7m",
-    description: "Program 8 minggu boxing fundamentals untuk pemula. Belajar teknik dasar, improve cardio, dan building confidence dengan safe progression.",
-    image: "/images/boxing-fundamentals.jpg",
-    equipment: ["Boxing gloves", "Hand wraps", "Heavy bag (opsional)", "Jump rope", "Timer"],
-    targetAudience: ["Pemula boxing", "Mau cardio yang fun", "Build confidence & discipline", "Stress relief lewat boxing"],
-    goals: ["Master basic techniques", "Improve cardio fitness", "Build mental toughness", "Self-defense basics"],
-    workoutOverview: [
-      {
-        week: 1,
-        focus: "Stance & Basic Punches",
-        workouts: [
-          {
-            day: 1,
-            name: "Fundamentals A",
-            exercises: [
-              { name: "Stance Practice", sets: "3", reps: "2 min", rest: "1 min", notes: "Orthodox/southpaw" },
-              { name: "Jab Practice", sets: "5", reps: "20 punches", rest: "30s", notes: "Focus extension & snap" },
-              { name: "Cross Practice", sets: "5", reps: "20 punches", rest: "30s", notes: "Hip rotation" },
-              { name: "Jump Rope", sets: "3", reps: "1 min", rest: "30s", notes: "Light on feet" },
-              { name: "Shadowboxing", sets: "3", reps: "1 min", rest: "1 min", notes: "Combine jab-cross" }
-            ]
-          }
-        ]
-      }
-    ]
-  },
-  {
-    id: "sprinter-speed",
-    title: "Sprinter Speed Development",
-    level: "Intermediate",
-    durationWeeks: 10,
-    daysPerWeek: "4x/minggu, 60-75 menit",
-    environment: "Gym",
-    price: "Rp 349.000",
-    features: ["Speed & power training", "Plyometric exercises", "Sprint technique", "Recovery protocols"],
-    href: "https://lynk.id/prps.sport/q7mn77dz3w7m",
-    description: "Program 10 minggu untuk develop speed, power, dan explosiveness. Kombinasi strength training, plyometrics, dan sprint technique.",
-    image: "/images/sprinter-speed.jpg",
-    equipment: ["Track/open space", "Barbell", "Plyometric box", "Resistance bands", "Cones"],
-    targetAudience: ["Athletes", "Mau improve speed", "Soccer/basketball players", "Competitive runner"],
-    goals: ["Increase sprint speed", "Power & explosiveness", "Better acceleration", "Injury prevention"],
-    workoutOverview: [
-      {
-        week: 1,
-        focus: "Speed Foundation & Technique",
-        workouts: [
-          {
-            day: 1,
-            name: "Speed & Power A",
-            exercises: [
-              { name: "Dynamic Warm-up", sets: "1", reps: "10 min", rest: "-", notes: "A-skips, butt kicks, high knees" },
-              { name: "Acceleration Sprints", sets: "6", reps: "20m", rest: "90s", notes: "Focus first 3 steps" },
-              { name: "Box Jumps", sets: "4", reps: "5", rest: "2 min", notes: "Explosive concentric" },
-              { name: "Back Squat", sets: "4", reps: "3-5", rest: "3 min", notes: "Speed & power focus" },
-              { name: "Single Leg Bounds", sets: "3", reps: "8 each leg", rest: "90s", notes: "Distance & height" }
-            ]
-          }
-        ]
-      }
-    ]
-  }
-]
+export const ALL_PLANS: Plan[] = FEATURED_PLANS
 
 export const TESTIMONIALS = [
   {

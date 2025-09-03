@@ -12,7 +12,7 @@ import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from "@/
 import { Container } from "@/components/Container"
 import { Section } from "@/components/Section"
 import { ALL_PLANS } from "@/lib/constants"
-import { ArrowLeft, Clock, MapPin, Target, CheckCircle, Play } from "lucide-react"
+import { ArrowLeft, Clock, MapPin, Target, CheckCircle, Play, User, Award, Star } from "lucide-react"
 import Image from "next/image"
 
 interface PageProps {
@@ -132,12 +132,13 @@ export default function ProgramDetailPage({ params }: PageProps) {
           </div>
         </div>
 
-        {/* Tabs: Overview, Equipment, Target */}
+        {/* Tabs: Overview, Equipment, Target, Trainer */}
         <Tabs defaultValue="overview" className="mt-16">
-          <TabsList className="grid w-full grid-cols-3">
+          <TabsList className="grid w-full grid-cols-4">
             <TabsTrigger value="overview">Overview Latihan</TabsTrigger>
             <TabsTrigger value="equipment">Equipment</TabsTrigger>
             <TabsTrigger value="target">Target & Goal</TabsTrigger>
+            <TabsTrigger value="trainer">Coach</TabsTrigger>
           </TabsList>
           
           <TabsContent value="overview" className="mt-8">
@@ -272,6 +273,74 @@ export default function ProgramDetailPage({ params }: PageProps) {
                 </CardContent>
               </Card>
             </div>
+          </TabsContent>
+          
+          <TabsContent value="trainer" className="mt-8">
+            <Card>
+              <CardHeader>
+                <CardTitle className="flex items-center gap-2">
+                  <User className="h-5 w-5" />
+                  Meet Your Coach
+                </CardTitle>
+              </CardHeader>
+              <CardContent>
+                <div className="space-y-6">
+                  {/* Trainer Profile */}
+                  <div className="flex items-start gap-4">
+                    <div className="flex-shrink-0">
+                      <div className="h-16 w-16 rounded-full bg-muted flex items-center justify-center">
+                        {program.trainer.image ? (
+                          <Image
+                            src={program.trainer.image}
+                            alt={program.trainer.name}
+                            width={64}
+                            height={64}
+                            className="rounded-full object-cover"
+                          />
+                        ) : (
+                          <User className="h-8 w-8 text-muted-foreground" />
+                        )}
+                      </div>
+                    </div>
+                    <div className="flex-1 space-y-2">
+                      <h4 className="font-semibold text-lg">{program.trainer.name}</h4>
+                      <p className="text-sm text-muted-foreground">{program.trainer.experience}</p>
+                    </div>
+                  </div>
+                  
+                  {/* Credentials */}
+                  <div>
+                    <h5 className="font-medium mb-3 flex items-center gap-2">
+                      <Award className="h-4 w-4" />
+                      Sertifikasi & Kredensial:
+                    </h5>
+                    <div className="space-y-2">
+                      {program.trainer.credentials.map((credential, index) => (
+                        <div key={index} className="flex items-center gap-2">
+                          <CheckCircle className="h-4 w-4 text-green-500" />
+                          <span className="text-sm">{credential}</span>
+                        </div>
+                      ))}
+                    </div>
+                  </div>
+                  
+                  {/* Specialization */}
+                  <div>
+                    <h5 className="font-medium mb-3 flex items-center gap-2">
+                      <Star className="h-4 w-4" />
+                      Spesialisasi:
+                    </h5>
+                    <div className="flex flex-wrap gap-2">
+                      {program.trainer.specialization.map((spec, index) => (
+                        <Badge key={index} variant="secondary">
+                          {spec}
+                        </Badge>
+                      ))}
+                    </div>
+                  </div>
+                </div>
+              </CardContent>
+            </Card>
           </TabsContent>
         </Tabs>
 

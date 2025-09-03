@@ -3,7 +3,7 @@
 import { Card, CardContent, CardFooter, CardHeader, CardTitle } from "@/components/ui/card"
 import { Badge } from "@/components/ui/badge"
 import { Button } from "@/components/ui/button"
-import { ExternalLink, Clock, Calendar, MapPin, Eye } from "lucide-react"
+import { ExternalLink, Clock, Calendar, MapPin, Eye, User } from "lucide-react"
 import { Plan } from "@/lib/constants"
 import { trackPlanClick } from "@/lib/analytics"
 import Link from "next/link"
@@ -39,19 +39,30 @@ export function PlanCard({ plan, featured = false }: PlanCardProps) {
             ))}
           </div>
           <CardTitle className="text-xl font-bold">{plan.title}</CardTitle>
-          <div className="flex flex-wrap gap-2 text-sm text-muted-foreground">
-            <div className="flex items-center gap-1">
-              <Calendar className="h-3 w-3" />
-              {plan.durationWeeks} minggu
+          <div className="space-y-2">
+            <div className="flex flex-wrap gap-2 text-sm text-muted-foreground">
+              <div className="flex items-center gap-1">
+                <Calendar className="h-3 w-3" />
+                {plan.durationWeeks} minggu
+              </div>
+              <div className="flex items-center gap-1">
+                <Clock className="h-3 w-3" />
+                {plan.daysPerWeek}
+              </div>
+              <div className="flex items-center gap-1">
+                <MapPin className="h-3 w-3" />
+                {plan.environment}
+              </div>
             </div>
-            <div className="flex items-center gap-1">
-              <Clock className="h-3 w-3" />
-              {plan.daysPerWeek}
-            </div>
-            <div className="flex items-center gap-1">
-              <MapPin className="h-3 w-3" />
-              {plan.environment}
-            </div>
+            {plan.trainer && (
+              <div className="flex items-center gap-1 text-xs text-muted-foreground">
+                <User className="h-3 w-3" />
+                <span>by {plan.trainer.name}</span>
+              </div>
+            )}
+            <Badge variant="outline" className="text-xs">
+              {plan.sport}
+            </Badge>
           </div>
         </CardHeader>
         
