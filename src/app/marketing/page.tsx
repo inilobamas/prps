@@ -26,22 +26,22 @@ export default function HomePage() {
               transition={{ duration: 0.8 }}
             >
               <h1 className="text-4xl font-bold tracking-tight text-foreground sm:text-6xl md:text-7xl">
-                Programs that{" "}
-                <span className="text-gradient">fit your life</span>
+                Your plan.{" "}
+                <span className="text-gradient">Your pace.</span>
               </h1>
               <p className="mx-auto mt-6 max-w-2xl text-lg leading-8 text-muted-foreground sm:text-xl">
-                Your plan, Your pace, #KeepShowing.
+                Program gym ramah pemula—mulai dari rumah atau powerlifting gym di Malang.
               </p>
               <div className="mt-10 flex items-center justify-center gap-x-6">
                 <Button asChild size="lg" className="bg-green-500 hover:bg-green-600">
                   <Link href="/plans">
-                    Browse Plans
+                    Lihat Program
                     <ArrowRight className="ml-2 h-4 w-4" />
                   </Link>
                 </Button>
                 <Button asChild variant="outline" size="lg">
                   <Link href={SOCIAL_LINKS.tiktok} target="_blank">
-                    Follow on TikTok
+                    Follow di TikTok
                   </Link>
                 </Button>
               </div>
@@ -55,10 +55,10 @@ export default function HomePage() {
         <Container>
           <div className="mx-auto max-w-2xl text-center">
             <h2 className="text-3xl font-bold tracking-tight text-foreground sm:text-4xl">
-              Why PRPS Works
+              Kenapa PRPS
             </h2>
             <p className="mt-4 text-lg text-muted-foreground">
-              Three pillars that make our programs effective for everyone
+              Tiga alasan kenapa program PRPS cocok untuk pemula
             </p>
           </div>
           
@@ -66,18 +66,18 @@ export default function HomePage() {
             {[
               {
                 icon: <Dumbbell className="h-8 w-8" />,
-                title: "Coach-built routines",
-                description: "Every program designed by certified trainers with years of experience"
+                title: "Pemula-friendly",
+                description: "Fokus teknik dasar, progres realistis, tanpa intimidasi"
               },
               {
                 icon: <Users className="h-8 w-8" />,
-                title: "Beginner-friendly gyms & communities",
-                description: "Supportive environment whether you're starting at home or in the gym"
+                title: "Terstruktur & fleksibel",
+                description: "Rencana mingguan 3–4x latihan, bisa di rumah atau gym"
               },
               {
                 icon: <TrendingUp className="h-8 w-8" />,
-                title: "Progress you can feel",
-                description: "Structured progression that builds strength and confidence every week"
+                title: "Harga transparan",
+                description: "Bayar sekali, akses materi lengkap (video, PDF, tracker)"
               }
             ].map((prop, index) => (
               <motion.div
@@ -109,10 +109,10 @@ export default function HomePage() {
         <Container>
           <div className="mx-auto max-w-2xl text-center">
             <h2 className="text-3xl font-bold tracking-tight text-foreground sm:text-4xl">
-              Featured Programs
+              Program Unggulan
             </h2>
             <p className="mt-4 text-lg text-muted-foreground">
-              Start with our most popular plans, designed for real results
+              Mulai dengan program terpopuler, dirancang untuk hasil nyata
             </p>
           </div>
 
@@ -133,7 +133,7 @@ export default function HomePage() {
           <div className="mt-12 text-center">
             <Button asChild size="lg" variant="outline">
               <Link href="/plans">
-                View All Plans
+                Lihat Semua Program
                 <ArrowRight className="ml-2 h-4 w-4" />
               </Link>
             </Button>
@@ -149,10 +149,10 @@ export default function HomePage() {
         <Container>
           <div className="mx-auto max-w-2xl text-center">
             <h2 className="text-3xl font-bold tracking-tight text-foreground sm:text-4xl">
-              Real Results
+              Hasil Nyata
             </h2>
             <p className="mt-4 text-lg text-muted-foreground">
-              See what our community is saying
+              Lihat testimoni komunitas PRPS
             </p>
           </div>
 
@@ -189,15 +189,15 @@ export default function HomePage() {
         <Container>
           <div className="mx-auto max-w-4xl text-center">
             <h2 className="text-3xl font-bold tracking-tight text-foreground sm:text-4xl">
-              Partner with PRPS
+              Kolaborasi dengan PRPS
             </h2>
             <p className="mt-4 text-lg text-muted-foreground">
-              Creators &amp; gyms in Malang &amp; Indonesia - let&apos;s build something together
+              Kreator &amp; gym di Malang &amp; Indonesia - mari berkolaborasi membangun komunitas fitness yang lebih kuat
             </p>
             <div className="mt-8">
               <Button asChild size="lg" className="bg-green-500 hover:bg-green-600">
                 <Link href="/collab">
-                  Partner with PRPS
+                  Bergabung sebagai Partner
                   <ArrowRight className="ml-2 h-4 w-4" />
                 </Link>
               </Button>
@@ -212,10 +212,10 @@ export default function HomePage() {
           <div className="mx-auto max-w-3xl">
             <div className="text-center">
               <h2 className="text-3xl font-bold tracking-tight text-foreground sm:text-4xl">
-                Frequently Asked Questions
+                Tanya Jawab
               </h2>
               <p className="mt-4 text-lg text-muted-foreground">
-                Everything you need to know about PRPS programs
+                Semua yang perlu kamu tahu tentang program PRPS
               </p>
             </div>
 
@@ -242,15 +242,15 @@ export default function HomePage() {
         <Container>
           <div className="mx-auto max-w-2xl text-center">
             <h2 className="text-3xl font-bold tracking-tight sm:text-4xl">
-              Start today. Keep showing.
+              Siap mulai versi terbaikmu?
             </h2>
             <p className="mt-4 text-lg text-slate-300">
-              Join thousands who&apos;ve transformed their fitness with PRPS
+              Your plan. Your pace. #KeepShowing
             </p>
             <div className="mt-8">
               <Button asChild size="lg" className="bg-green-500 hover:bg-green-600">
                 <Link href="/plans">
-                  Get Started Now
+                  Lihat Program
                   <ArrowRight className="ml-2 h-4 w-4" />
                 </Link>
               </Button>

@@ -28,7 +28,7 @@ export function PlanCard({ plan, featured = false }: PlanCardProps) {
       <Card className={`h-full flex flex-col ${featured ? 'ring-2 ring-green-500' : ''}`}>
         <CardHeader>
           <div className="flex items-start justify-between">
-            <Badge variant={plan.level === "Beginner" ? "secondary" : plan.level === "Intermediate" ? "default" : "outline"}>
+            <Badge variant={plan.level === "Pemula" || plan.level === "Pemula serius" ? "secondary" : plan.level === "Intermediate" ? "default" : "outline"}>
               {plan.level}
             </Badge>
             {plan.tags && plan.tags.map(tag => (

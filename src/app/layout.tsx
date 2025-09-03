@@ -18,7 +18,10 @@ const poppins = Poppins({
   weight: ["400", "500", "600", "700"],
 });
 
-export const metadata: Metadata = generateSEO({});
+export const metadata: Metadata = generateSEO({
+  title: "Program Gym Pemula (Bodybuilding & Powerlifting) - Malang",
+  description: "Program pemula yang terstruktur, video panduan, dan harga transparan. Mulai di rumah atau gym. Your plan. Your pace. #KeepShowing"
+});
 
 export default function RootLayout({
   children,

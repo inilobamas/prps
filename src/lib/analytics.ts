@@ -2,8 +2,11 @@ export const GA_TRACKING_ID = process.env.NEXT_PUBLIC_GA_ID
 export const TIKTOK_PIXEL_ID = process.env.NEXT_PUBLIC_TIKTOK_PIXEL_ID
 
 export const gtag = (...args: unknown[]) => {
-  if (typeof window !== 'undefined' && (window as any).gtag) {
-    (window as any).gtag(...args)
+  if (typeof window !== 'undefined') {
+    const windowWithGtag = window as Window & { gtag?: (...args: unknown[]) => void }
+    if (windowWithGtag.gtag) {
+      windowWithGtag.gtag(...args)
+    }
   }
 }
 

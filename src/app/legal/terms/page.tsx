@@ -41,7 +41,7 @@ export default function TermsPage() {
 
           <h2>External Services</h2>
           <p>
-            PRPS workout plans are sold exclusively through Lynk.id. When you click "Get via Lynk.id" 
+            PRPS workout plans are sold exclusively through Lynk.id. When you click &ldquo;Get via Lynk.id&rdquo; 
             or similar purchase links, you will be directed to Lynk.id&apos;s platform where separate 
             terms and conditions apply.
           </p>

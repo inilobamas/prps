@@ -1,7 +1,7 @@
 export const SITE_CONFIG = {
   name: "PRPS",
   tagline: "your plan, your pace, keep showing",
-  description: "Programs that fit your life. PRPS workout plans for bodybuilding and powerlifting.",
+  description: "Program gym ramah pemula untuk bodybuilding dan powerlifting. Your plan, your pace, keep showing.",
   url: "https://prps-landing.vercel.app",
   creator: "@prps_sport",
 }
@@ -13,7 +13,8 @@ export const SOCIAL_LINKS = {
 }
 
 export const PLAN_CATEGORIES = [
-  "Beginner",
+  "Pemula",
+  "Pemula serius", 
   "Intermediate",
   "Advanced"
 ] as const
@@ -51,36 +52,36 @@ export interface Plan {
 export const FEATURED_PLANS: Plan[] = [
   {
     id: "powerbuilding-foundation",
-    title: "Powerbuilding Foundation",
-    level: "Beginner",
+    title: "Beginner Strength (Bodybuilding)",
+    level: "Pemula",
     durationWeeks: 8,
-    daysPerWeek: "4-day",
+    daysPerWeek: "3x/minggu, ±45-60 menit",
     environment: "Home or Gym",
-    price: "$19",
-    features: ["Full body strength", "Muscle building focus", "Progressive overload", "Video guides"],
+    price: "Rp 199.000",
+    features: ["Fondasi kekuatan & teknik", "Perbaikan postur & range", "Kebiasaan latihan sehat", "Video demo + PDF plan"],
     href: "https://lynk.id/prps.sport/powerbuilding-foundation",
     tags: ["Popular"]
   },
   {
     id: "push-pull-legs",
-    title: "Push/Pull/Legs 5-Day",
-    level: "Intermediate", 
-    durationWeeks: 12,
-    daysPerWeek: "5-day",
+    title: "Powerlifting Intro (SBD)",
+    level: "Pemula serius", 
+    durationWeeks: 6,
+    daysPerWeek: "3-4x/minggu, fokus SBD",
     environment: "Gym",
-    price: "$29",
-    features: ["Split training", "Volume progression", "Advanced techniques", "Nutrition guide"],
+    price: "Rp 299.000",
+    features: ["Teknik dasar SBD", "Dasar RPE", "Progres beban terukur", "Video cue teknik"],
     href: "https://lynk.id/prps.sport/push-pull-legs"
   },
   {
     id: "beginner-powerlifting",
-    title: "Beginner Powerlifting 3-Day",
-    level: "Beginner",
+    title: "Home Bodyweight Foundation",
+    level: "Pemula",
     durationWeeks: 4,
-    daysPerWeek: "3-day", 
-    environment: "Home or Gym",
-    price: "$15",
-    features: ["Big 3 focus", "Form tutorials", "Strength building", "Minimal equipment"],
+    daysPerWeek: "3x/minggu, 30-45 menit", 
+    environment: "Home",
+    price: "Rp 149.000",
+    features: ["Tanpa alat", "Progres bertahap", "Fleksibel waktu", "Video panduan lengkap"],
     href: "https://lynk.id/prps.sport/beginner-powerlifting"
   }
 ]
@@ -101,7 +102,7 @@ export const ALL_PLANS: Plan[] = [
   {
     id: "home-strength",
     title: "Home Strength Builder",
-    level: "Beginner",
+    level: "Pemula",
     durationWeeks: 8,
     daysPerWeek: "3-day",
     environment: "Home",
@@ -124,56 +125,56 @@ export const ALL_PLANS: Plan[] = [
 
 export const TESTIMONIALS = [
   {
-    name: "Sarah M.",
-    quote: "Finally found a program that fits my busy schedule. Lost 15lbs in 8 weeks!",
+    name: "Rina, 27",
+    quote: "Baru pertama kali ke gym dan nggak bingung lagi—latihannya jelas step by step.",
     rating: 5
   },
   {
-    name: "David K.", 
-    quote: "The progression is perfect. PR'd my squat after just 4 weeks.",
+    name: "Andi, 24", 
+    quote: "Powerlifting ternyata bisa banget buat pemula, tekniknya dipecah detail.",
     rating: 5
   },
   {
-    name: "Maya R.",
-    quote: "Love the flexibility. Home workouts when I'm busy, gym when I have time.",
+    name: "Sari, 29",
+    quote: "Fleksibel banget, bisa latihan di rumah kalau lagi sibuk atau ke gym pas weekend.",
     rating: 5
   },
   {
-    name: "Alex T.",
-    quote: "Best investment I've made for my fitness. The community is amazing too.",
+    name: "Budi, 31",
+    quote: "Worth it banget! Komunitas supportive dan programnya beneran kerja.",
     rating: 5
   }
 ]
 
 export const STATS = [
-  { label: "Athletes Helped", value: "2,500+" },
-  { label: "Avg. Plan Completion", value: "89%" },
-  { label: "Community Partners", value: "50+" }
+  { label: "Member Aktif", value: "2,500+" },
+  { label: "Tingkat Completion", value: "89%" },
+  { label: "Partner Gym", value: "50+" }
 ]
 
 export const FAQ_ITEMS = [
   {
-    question: "What makes PRPS plans different?",
-    answer: "Our plans are designed by certified coaches with real-world experience. Each program adapts to your lifestyle - whether you have a home gym or prefer commercial gyms."
+    question: "Saya pemula banget. Bisa ikut?",
+    answer: "Bisa banget! Semua program punya variasi ringan dan video cue teknik yang detail. Mulai dari program Foundation dulu."
   },
   {
-    question: "Do I need expensive equipment?",
-    answer: "Most plans work with basic equipment: dumbbells, resistance bands, or just bodyweight. We clearly mark what's needed for each program."
+    question: "Harus ke gym?",
+    answer: "Tidak harus. Ada opsi home (dumbbell/bodyweight) dan gym (barbell). Pilih sesuai akses dan preferensi kamu."
   },
   {
-    question: "What if I don't like my plan?",
-    answer: "All purchases are handled through Lynk.id with their standard refund policy. Contact support@lynk.id for any issues."
+    question: "Bagaimana akses setelah bayar?",
+    answer: "Setelah pembayaran via Lynk.id, kamu langsung dapat link untuk download materi (PDF, video, tracker)."
   },
   {
-    question: "Are these suitable for beginners?", 
-    answer: "Absolutely! We have dedicated beginner programs with form videos and progression guides. Start with our Foundation programs."
+    question: "Kalau tidak cocok, bisa refund?", 
+    answer: "Jika belum mengunduh materi, bisa ajukan refund dalam 7 hari sesuai kebijakan Lynk.id. Hubungi support@lynk.id."
   },
   {
-    question: "How flexible are the schedules?",
-    answer: "Very flexible! Most plans include workout swaps and rest day adjustments. You can adapt the timing to fit your schedule."
+    question: "Jadwalnya fleksibel?",
+    answer: "Sangat fleksibel! Program bisa diadaptasi sesuai waktu luang. Ada panduan swap workout dan rest day adjustment."
   },
   {
-    question: "How do I get support?",
-    answer: "Join our community on social media for peer support, or contact us directly for program questions."
+    question: "Dapat support komunitas?",
+    answer: "Tentu! Join grup WhatsApp dan follow Instagram @prps_sport untuk tips, motivasi, dan tanya-jawab."
   }
 ]

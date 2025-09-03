@@ -9,9 +9,9 @@ import { Container } from "./Container"
 import { Menu } from "lucide-react"
 
 const NAV_ITEMS = [
-  { href: "/", label: "Home" },
-  { href: "/plans", label: "Plans" }, 
-  { href: "/collab", label: "Collab" }
+  { href: "/", label: "Beranda" },
+  { href: "/plans", label: "Program" }, 
+  { href: "/collab", label: "Kolaborasi" }
 ]
 
 export function SiteHeader() {
@@ -41,7 +41,7 @@ export function SiteHeader() {
           <div className="flex items-center gap-2">
             <ThemeToggle />
             <Button asChild size="sm" className="hidden md:inline-flex bg-green-500 hover:bg-green-600">
-              <Link href="/plans">Get a Plan</Link>
+              <Link href="/plans">Lihat Program</Link>
             </Button>
 
             {/* Mobile Navigation */}
@@ -66,7 +66,7 @@ export function SiteHeader() {
                   ))}
                   <Button asChild className="mt-4 bg-green-500 hover:bg-green-600">
                     <Link href="/plans" onClick={() => setOpen(false)}>
-                      Get a Plan
+                      Lihat Program
                     </Link>
                   </Button>
                 </nav>

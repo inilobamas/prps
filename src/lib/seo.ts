@@ -20,7 +20,7 @@ export function generateSEO({
     description: description || SITE_CONFIG.description,
     openGraph: {
       type: "website",
-      locale: "en_US",
+      locale: "id_ID",
       url,
       title: siteTitle,
       description: description || SITE_CONFIG.description,
