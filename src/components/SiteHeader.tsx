@@ -11,7 +11,7 @@ import { Menu } from "lucide-react"
 const NAV_ITEMS = [
   { href: "/", label: "Beranda" },
   { href: "/marketing/plans", label: "Program" },
-  { href: "/app", label: "Tracker" }
+  // { href: "/app", label: "Tracker" }
    // { href: "/marketing/collab", label: "Kolaborasi" }
 ]
 
