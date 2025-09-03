@@ -73,52 +73,82 @@ export interface Plan {
 
 export const FEATURED_PLANS: Plan[] = [
   {
-    id: "powerbuilding-foundation",
-    title: "Beginner Strength (Bodybuilding)",
-    level: "Pemula",
-    durationWeeks: 8,
-    daysPerWeek: "3x/minggu, ±45-60 menit",
-    environment: "Home or Gym",
-    price: "Rp 199.000",
-    features: ["Fondasi kekuatan & teknik", "Perbaikan postur & range", "Kebiasaan latihan sehat", "Video demo + PDF plan"],
+    id: "sbd-powerlifting",
+    title: "SBD Powerlifting Program",
+    level: "Intermediate",
+    durationWeeks: 12,
+    daysPerWeek: "4x/minggu, 60-90 menit",
+    environment: "Gym",
+    price: "Rp 399.000",
+    features: ["Teknik SBD advanced", "Peaking protocol", "RPE & percentage training", "Competition prep"],
+    href: "https://lynk.id/prps.sport/q7mn77dz3w7m",
+    tags: ["Best Seller"],
+    description: "Program 12 minggu powerlifting serius untuk master Squat, Bench Press, dan Deadlift. Dari strength building sampai peaking untuk kompetisi.",
+    image: "/images/sbd-powerlifting.jpg",
+    equipment: ["Barbell olympik", "Squat rack", "Bench press", "Plates", "Belt powerlifting"],
+    targetAudience: ["Serious lifters", "Persiapan kompetisi", "Mau PR di SBD", "Level intermediate+"],
+    goals: ["Master teknik SBD", "Increase 1RM significantly", "Competition ready", "Injury-free progression"],
+    workoutOverview: [
+      {
+        week: 1,
+        focus: "Volume Accumulation",
+        workouts: [
+          {
+            day: 1,
+            name: "Squat Emphasis",
+            exercises: [
+              { name: "Back Squat", sets: "5", reps: "5 @ RPE 7-8", rest: "3-4 min", notes: "Focus competition depth" },
+              { name: "Front Squat", sets: "4", reps: "6-8", rest: "3 min", notes: "Quad emphasis" },
+              { name: "Romanian Deadlift", sets: "3", reps: "8-10", rest: "2 min", notes: "Hip hinge reinforcement" },
+              { name: "Leg Press", sets: "3", reps: "15-20", rest: "90s", notes: "High volume finisher" },
+              { name: "Abs Circuit", sets: "3", reps: "45s work/15s rest", rest: "2 min", notes: "Core stability" }
+            ]
+          },
+          {
+            day: 2,
+            name: "Bench Emphasis", 
+            exercises: [
+              { name: "Bench Press", sets: "5", reps: "5 @ RPE 7-8", rest: "3-4 min", notes: "Competition grip & setup" },
+              { name: "Close Grip Bench", sets: "4", reps: "6-8", rest: "3 min", notes: "Tricep & lockout strength" },
+              { name: "Barbell Row", sets: "4", reps: "8-10", rest: "2 min", notes: "Lat engagement" },
+              { name: "Overhead Press", sets: "3", reps: "8-12", rest: "90s", notes: "Shoulder stability" },
+              { name: "Tricep Dips", sets: "3", reps: "10-15", rest: "90s", notes: "Bodyweight finisher" }
+            ]
+          }
+        ]
+      }
+    ]
+  },
+  {
+    id: "bodybuilding-aesthetic",
+    title: "Bodybuilding Aesthetic Split",
+    level: "Intermediate",
+    durationWeeks: 12,
+    daysPerWeek: "5-6x/minggu, 60-75 menit",
+    environment: "Gym",
+    price: "Rp 349.000",
+    features: ["Muscle isolation focus", "High volume training", "Aesthetic sculpting", "Nutrition & supplement guide"],
     href: "https://lynk.id/prps.sport/q7mn77dz3w7m",
     tags: ["Popular"],
-    description: "Program 8 minggu untuk membangun fondasi kekuatan dan teknik dasar. Cocok banget buat pemula yang mau mulai latihan serius tapi tetap aman dan terstruktur.",
-    image: "/images/beginner-strength.jpg",
-    equipment: ["Dumbbell 2-10kg", "Matras yoga", "Resistance band (opsional)"],
-    targetAudience: ["Pemula total", "Comeback setelah lama tidak latihan", "Mau fokus teknik yang benar"],
-    goals: ["Membangun kekuatan dasar", "Memperbaiki postur tubuh", "Membentuk kebiasaan latihan", "Persiapan ke program advanced"],
+    description: "Program 12 minggu bodybuilding aesthetic untuk sculpt physique yang proporsional. Focus pada muscle definition, symmetry, dan visual impact.",
+    image: "/images/bodybuilding-aesthetic.jpg",
+    equipment: ["Full gym access", "Dumbbells", "Cable machine", "Barbells", "Preacher bench"],
+    targetAudience: ["Goal aesthetic physique", "Mau compete/photoshoot", "Level intermediate", "Komit high volume training"],
+    goals: ["Muscle definition & size", "Proportional physique", "Low body fat", "Stage/photo ready"],
     workoutOverview: [
       {
         week: 1,
-        focus: "Adaptasi & Teknik Dasar",
+        focus: "Hypertrophy Foundation",
         workouts: [
           {
             day: 1,
-            name: "Full Body A",
+            name: "Chest & Triceps",
             exercises: [
-              { name: "Goblet Squat", sets: "3", reps: "8-12", rest: "60-90s", notes: "Fokus kedalaman squat" },
-              { name: "Push-up (knee/regular)", sets: "3", reps: "5-10", rest: "60s", notes: "Variasi sesuai kemampuan" },
-              { name: "Dumbbell Row", sets: "3", reps: "8-12", rest: "60s", notes: "Tarik ke arah perut" },
-              { name: "Plank Hold", sets: "3", reps: "20-45s", rest: "60s", notes: "Jaga postur lurus" }
-            ]
-          },
-          {
-            day: 2,
-            name: "Active Recovery",
-            exercises: [
-              { name: "Walking/Light Jog", sets: "1", reps: "15-30 min", rest: "-", notes: "Low intensity" },
-              { name: "Dynamic Stretching", sets: "1", reps: "10 min", rest: "-", notes: "Focus problem areas" }
-            ]
-          },
-          {
-            day: 3,
-            name: "Full Body B",
-            exercises: [
-              { name: "Dumbbell Deadlift", sets: "3", reps: "6-10", rest: "90s", notes: "Hinge pattern" },
-              { name: "Overhead Press", sets: "3", reps: "6-10", rest: "90s", notes: "Tight core" },
-              { name: "Bulgarian Split Squat", sets: "3", reps: "6-10 each leg", rest: "60s", notes: "Balance & control" },
-              { name: "Dead Bug", sets: "3", reps: "8-12 each side", rest: "45s", notes: "Slow & controlled" }
+              { name: "Barbell Bench Press", sets: "4", reps: "8-10", rest: "2 min", notes: "Muscle contraction focus" },
+              { name: "Incline Dumbbell Press", sets: "4", reps: "10-12", rest: "90s", notes: "Upper chest development" },
+              { name: "Cable Flyes", sets: "3", reps: "12-15", rest: "60s", notes: "Peak contraction" },
+              { name: "Close Grip Bench", sets: "3", reps: "10-12", rest: "90s", notes: "Tricep mass focus" },
+              { name: "Cable Tricep Extension", sets: "4", reps: "12-15", rest: "45s", notes: "Multiple angles" }
             ]
           }
         ]
@@ -126,87 +156,103 @@ export const FEATURED_PLANS: Plan[] = [
     ]
   },
   {
-    id: "push-pull-legs",
-    title: "Powerlifting Intro (SBD)",
-    level: "Pemula serius", 
-    durationWeeks: 6,
-    daysPerWeek: "3-4x/minggu, fokus SBD",
-    environment: "Gym",
-    price: "Rp 299.000",
-    features: ["Teknik dasar SBD", "Dasar RPE", "Progres beban terukur", "Video cue teknik"],
-    href: "https://lynk.id/prps.sport/q7mn77dz3w7m",
-    description: "Program 6 minggu khusus powerlifting untuk pemula serius. Focus pada Squat, Bench Press, dan Deadlift dengan teknik yang benar dan progres yang aman.",
-    image: "/images/powerlifting-intro.jpg",
-    equipment: ["Barbell + plates", "Squat rack", "Bench press", "Safety bars"],
-    targetAudience: ["Mau serius powerlifting", "Sudah punya akses gym lengkap", "Siap komit 4-6x/minggu"],
-    goals: ["Menguasai teknik SBD", "Memahami RPE system", "Membangun strength base", "Persiapan kompetisi lokal"],
-    workoutOverview: [
-      {
-        week: 1,
-        focus: "Teknik & Movement Pattern",
-        workouts: [
-          {
-            day: 1,
-            name: "Squat Focus",
-            exercises: [
-              { name: "Back Squat", sets: "5", reps: "5", rest: "3 min", notes: "Focus depth & technique" },
-              { name: "Romanian Deadlift", sets: "3", reps: "8", rest: "2 min", notes: "Hip hinge pattern" },
-              { name: "Leg Press", sets: "3", reps: "12", rest: "90s", notes: "Quad activation" },
-              { name: "Plank", sets: "3", reps: "30-60s", rest: "60s", notes: "Core stability" }
-            ]
-          },
-          {
-            day: 2,
-            name: "Bench Focus",
-            exercises: [
-              { name: "Bench Press", sets: "5", reps: "5", rest: "3 min", notes: "Arch & leg drive" },
-              { name: "Incline Dumbbell Press", sets: "3", reps: "8", rest: "2 min", notes: "Upper chest focus" },
-              { name: "Barbell Row", sets: "3", reps: "8", rest: "2 min", notes: "Retract scapula" },
-              { name: "Face Pulls", sets: "3", reps: "15", rest: "60s", notes: "Rear delt activation" }
-            ]
-          }
-        ]
-      }
-    ]
-  },
-  {
-    id: "beginner-powerlifting",
-    title: "Home Bodyweight Foundation",
-    level: "Pemula",
-    durationWeeks: 4,
-    daysPerWeek: "3x/minggu, 30-45 menit", 
+    id: "marathon-training",
+    title: "Marathon Training Program",
+    level: "Intermediate",
+    durationWeeks: 16,
+    daysPerWeek: "5-6x/minggu, 45-90 menit",
     environment: "Home",
-    price: "Rp 149.000",
-    features: ["Tanpa alat", "Progres bertahap", "Fleksibel waktu", "Video panduan lengkap"],
+    price: "Rp 299.000",
+    features: ["Progressive mileage", "Speed work sessions", "Recovery protocols", "Race day strategy"],
     href: "https://lynk.id/prps.sport/q7mn77dz3w7m",
-    description: "Program 4 minggu bodyweight yang perfect untuk pemula atau yang mau latihan di rumah. No excuse, cukup ruang 2x2 meter dan 30-45 menit aja!",
-    image: "/images/home-bodyweight.jpg",
-    equipment: ["Matras/towel", "Chair/sofa (opsional)", "Wall space"],
-    targetAudience: ["Pemula banget", "Ga ada akses gym", "Sibuk, butuh fleksibilitas waktu", "Mau latihan bareng keluarga"],
-    goals: ["Membangun habit latihan", "Strengthen movement basics", "Improve mobility & flexibility", "Prepare untuk gym program"],
+    description: "Program 16 minggu comprehensive untuk finish marathon dengan waktu yang optimal. Structured training dari base building sampai peak performance.",
+    image: "/images/marathon-training.jpg",
+    equipment: ["Running shoes", "GPS watch/phone", "Comfortable gear", "Water bottle & fuel"],
+    targetAudience: ["Target marathon 6 bulan", "Sudah bisa lari 10K", "Komit high mileage", "Goal sub 4:30 marathon"],
+    goals: ["Complete 42K distance", "Optimal race time", "Injury-free training", "Peak endurance fitness"],
     workoutOverview: [
       {
         week: 1,
-        focus: "Movement Basics & Habit Building",
+        focus: "Base Building Phase",
         workouts: [
           {
             day: 1,
-            name: "Upper Body Foundation",
+            name: "Easy Long Run",
             exercises: [
-              { name: "Push-up (knee/wall)", sets: "3", reps: "5-10", rest: "60s", notes: "Start with easiest variation" },
-              { name: "Bodyweight Row (table)", sets: "3", reps: "5-10", rest: "60s", notes: "Use sturdy table" },
-              { name: "Pike Push-up", sets: "2", reps: "3-8", rest: "90s", notes: "Shoulders & arms" },
-              { name: "Arm Circles", sets: "2", reps: "10 each direction", rest: "30s", notes: "Warm up shoulders" }
+              { name: "Warm-up Jog", sets: "1", reps: "10 min", rest: "-", notes: "Very easy pace" },
+              { name: "Long Run", sets: "1", reps: "8-10 km", rest: "-", notes: "Conversational pace, build aerobic base" },
+              { name: "Cool-down Walk", sets: "1", reps: "5 min", rest: "-", notes: "Gradual recovery" },
+              { name: "Stretching", sets: "1", reps: "15 min", rest: "-", notes: "Full body mobility" }
             ]
-          },
+          }
+        ]
+      }
+    ]
+  },
+  {
+    id: "boxing-fundamentals",
+    title: "Boxing Fundamentals",
+    level: "Pemula",
+    durationWeeks: 8,
+    daysPerWeek: "3-4x/minggu, 45-60 menit",
+    environment: "Home or Gym",
+    price: "Rp 249.000",
+    features: ["Basic boxing technique", "Cardio conditioning", "Shadowboxing drills", "Heavy bag combinations"],
+    href: "https://lynk.id/prps.sport/q7mn77dz3w7m",
+    description: "Program 8 minggu boxing fundamentals yang fun dan challenging. Perfect untuk cardio, stress relief, dan build confidence lewat martial arts.",
+    image: "/images/boxing-fundamentals.jpg",
+    equipment: ["Boxing gloves", "Hand wraps", "Heavy bag (opsional)", "Jump rope", "Timer app"],
+    targetAudience: ["Pemula boxing", "Mau cardio yang engaging", "Stress relief", "Self-defense basics"],
+    goals: ["Master basic punches", "Cardio improvement", "Coordination & timing", "Mental toughness"],
+    workoutOverview: [
+      {
+        week: 1,
+        focus: "Stance & Basic Punches",
+        workouts: [
           {
-            day: 2,
-            name: "Lower Body Foundation",
+            day: 1,
+            name: "Boxing Basics A",
             exercises: [
-              { name: "Bodyweight Squat", sets: "3", reps: "8-15", rest: "60s", notes: "Full range of motion" },
-              { name: "Reverse Lunge", sets: "3", reps: "6-12 each leg", rest: "60s", notes: "Control the descent" },
-              { name: "Single Leg Glute Bridge", sets: "3", reps: "5-10 each", rest: "45s", notes: "Squeeze at top" },
-              { name: "Calf Raises", sets: "2", reps: "15-20", rest: "30s", notes: "Pause at top" }
+              { name: "Jump Rope", sets: "3", reps: "2 min", rest: "1 min", notes: "Light on feet" },
+              { name: "Stance Practice", sets: "5", reps: "1 min", rest: "30s", notes: "Orthodox/southpaw comfort" },
+              { name: "Jab Technique", sets: "5", reps: "20 punches", rest: "30s", notes: "Snap & return" },
+              { name: "Cross Technique", sets: "5", reps: "20 punches", rest: "30s", notes: "Hip rotation power" },
+              { name: "Shadowboxing", sets: "3", reps: "1 min", rest: "1 min", notes: "Combine jab-cross" }
+            ]
+          }
+        ]
+      }
+    ]
+  },
+  {
+    id: "sprinter-speed",
+    title: "Sprinter Speed Development",
+    level: "Intermediate",
+    durationWeeks: 10,
+    daysPerWeek: "4x/minggu, 60-75 menit",
+    environment: "Gym",
+    price: "Rp 349.000",
+    features: ["Sprint technique", "Explosive power", "Plyometric training", "Speed endurance"],
+    href: "https://lynk.id/prps.sport/q7mn77dz3w7m",
+    description: "Program 10 minggu untuk develop kecepatan maksimal dan power. Khusus untuk athletes yang butuh speed advantage di sport mereka.",
+    image: "/images/sprinter-speed.jpg",
+    equipment: ["Track/open field", "Barbell", "Plyometric box", "Agility ladder", "Resistance bands"],
+    targetAudience: ["Athletes semua sport", "Soccer/basketball players", "Competitive runners", "Mau improve acceleration"],
+    goals: ["Increase top speed", "Better acceleration", "Explosive power", "Sport-specific speed"],
+    workoutOverview: [
+      {
+        week: 1,
+        focus: "Speed Mechanics & Power Base",
+        workouts: [
+          {
+            day: 1,
+            name: "Speed & Power A",
+            exercises: [
+              { name: "Dynamic Warm-up", sets: "1", reps: "10 min", rest: "-", notes: "A-skips, high knees, butt kicks" },
+              { name: "Acceleration Sprints", sets: "6", reps: "20m", rest: "2 min", notes: "Focus first 3-5 steps" },
+              { name: "Box Jumps", sets: "4", reps: "5", rest: "2 min", notes: "Max height, soft landing" },
+              { name: "Back Squat (Speed)", sets: "5", reps: "3 @ 60%", rest: "3 min", notes: "Explosive concentric" },
+              { name: "Single Leg Bounds", sets: "3", reps: "8 each", rest: "90s", notes: "Distance focus" }
             ]
           }
         ]
@@ -218,37 +264,151 @@ export const FEATURED_PLANS: Plan[] = [
 export const ALL_PLANS: Plan[] = [
   ...FEATURED_PLANS,
   {
-    id: "bodybuilding-split",
-    title: "Bodybuilding Split",
+    id: "bodybuilding-aesthetic",
+    title: "Bodybuilding Aesthetic Split",
     level: "Intermediate",
     durationWeeks: 12,
-    daysPerWeek: "6-day",
+    daysPerWeek: "5-6x/minggu, 60-75 menit",
     environment: "Gym", 
-    price: "$35",
-    features: ["Muscle isolation", "High volume", "Aesthetic focus", "Supplement guide"],
+    price: "Rp 399.000",
+    features: ["Muscle isolation focus", "High volume training", "Aesthetic sculpting", "Nutrition & supp guide"],
     href: "https://lynk.id/prps.sport/q7mn77dz3w7m",
+    description: "Program 12 minggu khusus bodybuilding aesthetic. Focus building muscle mass, definition, dan proporsi tubuh yang ideal dengan split training advanced.",
+    image: "/images/bodybuilding-aesthetic.jpg",
+    equipment: ["Full gym access", "Dumbbells", "Cable machine", "Barbells", "Bench adjustable"],
+    targetAudience: ["Sudah ada base strength", "Goal aesthetic & massa otot", "Komit 5-6x/minggu", "Mau serius bodybuilding"],
+    goals: ["Muscle mass & definition", "Proporsi tubuh ideal", "Strength endurance", "Competition ready physique"],
+    workoutOverview: [
+      {
+        week: 1,
+        focus: "Muscle Activation & Volume",
+        workouts: [
+          {
+            day: 1,
+            name: "Chest & Triceps",
+            exercises: [
+              { name: "Barbell Bench Press", sets: "4", reps: "8-10", rest: "2-3 min", notes: "Focus on muscle contraction" },
+              { name: "Incline Dumbbell Press", sets: "4", reps: "10-12", rest: "90s", notes: "Upper chest focus" },
+              { name: "Dumbbell Flyes", sets: "3", reps: "12-15", rest: "60s", notes: "Stretch & squeeze" },
+              { name: "Dips", sets: "3", reps: "10-15", rest: "90s", notes: "Full range of motion" },
+              { name: "Tricep Pushdown", sets: "4", reps: "12-15", rest: "60s", notes: "Strict form" }
+            ]
+          }
+        ]
+      }
+    ]
   },
   {
-    id: "home-strength",
-    title: "Home Strength Builder",
+    id: "marathon-runner",
+    title: "Marathon Training Program",
+    level: "Intermediate",
+    durationWeeks: 16,
+    daysPerWeek: "5-6x/minggu, 45-90 menit",
+    environment: "Home",
+    price: "Rp 299.000",
+    features: ["Progressive mileage", "Speed work", "Recovery protocols", "Nutrition timing"],
+    href: "https://lynk.id/prps.sport/q7mn77dz3w7m",
+    description: "Program 16 minggu comprehensive untuk persiapan marathon. Dari base building sampai peak mileage dengan structured training yang aman dan efektif.",
+    image: "/images/marathon-training.jpg",
+    equipment: ["Running shoes", "Stopwatch/GPS watch", "Comfortable running attire", "Water bottle"],
+    targetAudience: ["Sudah bisa lari 10K", "Target marathon dalam 6 bulan", "Komit training 5-6x/minggu", "Mau improve endurance"],
+    goals: ["Complete marathon distance", "Improve aerobic capacity", "Injury prevention", "Optimal race time"],
+    workoutOverview: [
+      {
+        week: 1,
+        focus: "Base Building Phase",
+        workouts: [
+          {
+            day: 1,
+            name: "Easy Run",
+            exercises: [
+              { name: "Easy Pace Run", sets: "1", reps: "5-6 km", rest: "-", notes: "Conversational pace, Zone 2" },
+              { name: "Dynamic Warm-up", sets: "1", reps: "10 min", rest: "-", notes: "Leg swings, high knees" },
+              { name: "Cool-down Stretch", sets: "1", reps: "10 min", rest: "-", notes: "Focus calves & hamstrings" }
+            ]
+          },
+          {
+            day: 2,
+            name: "Tempo Run",
+            exercises: [
+              { name: "Warm-up Jog", sets: "1", reps: "1.5 km", rest: "-", notes: "Easy pace" },
+              { name: "Tempo Run", sets: "1", reps: "3 km", rest: "-", notes: "Comfortably hard pace" },
+              { name: "Cool-down Jog", sets: "1", reps: "1 km", rest: "-", notes: "Easy pace" }
+            ]
+          }
+        ]
+      }
+    ]
+  },
+  {
+    id: "boxing-fundamentals",
+    title: "Boxing Fundamentals",
     level: "Pemula",
     durationWeeks: 8,
-    daysPerWeek: "3-day",
-    environment: "Home",
-    price: "$18",
-    features: ["Bodyweight focused", "Minimal equipment", "Space efficient", "Family friendly"],
+    daysPerWeek: "3-4x/minggu, 45-60 menit",
+    environment: "Home or Gym",
+    price: "Rp 249.000",
+    features: ["Basic boxing technique", "Cardio conditioning", "Shadowboxing", "Heavy bag workout"],
     href: "https://lynk.id/prps.sport/q7mn77dz3w7m",
+    description: "Program 8 minggu boxing fundamentals untuk pemula. Belajar teknik dasar, improve cardio, dan building confidence dengan safe progression.",
+    image: "/images/boxing-fundamentals.jpg",
+    equipment: ["Boxing gloves", "Hand wraps", "Heavy bag (opsional)", "Jump rope", "Timer"],
+    targetAudience: ["Pemula boxing", "Mau cardio yang fun", "Build confidence & discipline", "Stress relief lewat boxing"],
+    goals: ["Master basic techniques", "Improve cardio fitness", "Build mental toughness", "Self-defense basics"],
+    workoutOverview: [
+      {
+        week: 1,
+        focus: "Stance & Basic Punches",
+        workouts: [
+          {
+            day: 1,
+            name: "Fundamentals A",
+            exercises: [
+              { name: "Stance Practice", sets: "3", reps: "2 min", rest: "1 min", notes: "Orthodox/southpaw" },
+              { name: "Jab Practice", sets: "5", reps: "20 punches", rest: "30s", notes: "Focus extension & snap" },
+              { name: "Cross Practice", sets: "5", reps: "20 punches", rest: "30s", notes: "Hip rotation" },
+              { name: "Jump Rope", sets: "3", reps: "1 min", rest: "30s", notes: "Light on feet" },
+              { name: "Shadowboxing", sets: "3", reps: "1 min", rest: "1 min", notes: "Combine jab-cross" }
+            ]
+          }
+        ]
+      }
+    ]
   },
   {
-    id: "powerlifting-peaking",
-    title: "Powerlifting Peaking",
-    level: "Advanced", 
-    durationWeeks: 6,
-    daysPerWeek: "4-day",
+    id: "sprinter-speed",
+    title: "Sprinter Speed Development",
+    level: "Intermediate",
+    durationWeeks: 10,
+    daysPerWeek: "4x/minggu, 60-75 menit",
     environment: "Gym",
-    price: "$45",
-    features: ["Competition prep", "1RM focus", "Peaking protocol", "Recovery strategies"],
+    price: "Rp 349.000",
+    features: ["Speed & power training", "Plyometric exercises", "Sprint technique", "Recovery protocols"],
     href: "https://lynk.id/prps.sport/q7mn77dz3w7m",
+    description: "Program 10 minggu untuk develop speed, power, dan explosiveness. Kombinasi strength training, plyometrics, dan sprint technique.",
+    image: "/images/sprinter-speed.jpg",
+    equipment: ["Track/open space", "Barbell", "Plyometric box", "Resistance bands", "Cones"],
+    targetAudience: ["Athletes", "Mau improve speed", "Soccer/basketball players", "Competitive runner"],
+    goals: ["Increase sprint speed", "Power & explosiveness", "Better acceleration", "Injury prevention"],
+    workoutOverview: [
+      {
+        week: 1,
+        focus: "Speed Foundation & Technique",
+        workouts: [
+          {
+            day: 1,
+            name: "Speed & Power A",
+            exercises: [
+              { name: "Dynamic Warm-up", sets: "1", reps: "10 min", rest: "-", notes: "A-skips, butt kicks, high knees" },
+              { name: "Acceleration Sprints", sets: "6", reps: "20m", rest: "90s", notes: "Focus first 3 steps" },
+              { name: "Box Jumps", sets: "4", reps: "5", rest: "2 min", notes: "Explosive concentric" },
+              { name: "Back Squat", sets: "4", reps: "3-5", rest: "3 min", notes: "Speed & power focus" },
+              { name: "Single Leg Bounds", sets: "3", reps: "8 each leg", rest: "90s", notes: "Distance & height" }
+            ]
+          }
+        ]
+      }
+    ]
   }
 ]
 
