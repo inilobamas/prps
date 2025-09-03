@@ -3,9 +3,10 @@
 import { Card, CardContent, CardFooter, CardHeader, CardTitle } from "@/components/ui/card"
 import { Badge } from "@/components/ui/badge"
 import { Button } from "@/components/ui/button"
-import { ExternalLink, Clock, Calendar, MapPin } from "lucide-react"
+import { ExternalLink, Clock, Calendar, MapPin, Eye } from "lucide-react"
 import { Plan } from "@/lib/constants"
 import { trackPlanClick } from "@/lib/analytics"
+import Link from "next/link"
 import { motion } from "framer-motion"
 
 interface PlanCardProps {
@@ -41,7 +42,7 @@ export function PlanCard({ plan, featured = false }: PlanCardProps) {
           <div className="flex flex-wrap gap-2 text-sm text-muted-foreground">
             <div className="flex items-center gap-1">
               <Calendar className="h-3 w-3" />
-              {plan.durationWeeks} weeks
+              {plan.durationWeeks} minggu
             </div>
             <div className="flex items-center gap-1">
               <Clock className="h-3 w-3" />
@@ -65,12 +66,20 @@ export function PlanCard({ plan, featured = false }: PlanCardProps) {
           </ul>
         </CardContent>
 
-        <CardFooter className="flex items-center justify-between">
-          <div className="text-2xl font-bold">{plan.price}</div>
-          <Button onClick={handleCTAClick} className="bg-green-500 hover:bg-green-600">
-            Get via Lynk.id
-            <ExternalLink className="ml-2 h-4 w-4" />
-          </Button>
+        <CardFooter className="flex flex-col gap-3">
+          <div className="text-2xl font-bold text-center w-full">{plan.price}</div>
+          <div className="flex gap-2 w-full">
+            <Button asChild variant="outline" className="flex-1">
+              <Link href={`/marketing/plans/${plan.id}`}>
+                <Eye className="mr-2 h-4 w-4" />
+                Detail
+              </Link>
+            </Button>
+            <Button onClick={handleCTAClick} className="flex-1 bg-green-500 hover:bg-green-600">
+              Beli
+              <ExternalLink className="ml-2 h-4 w-4" />
+            </Button>
+          </div>
         </CardFooter>
       </Card>
     </motion.div>
