@@ -59,7 +59,7 @@ export const FEATURED_PLANS: Plan[] = [
     environment: "Home or Gym",
     price: "Rp 199.000",
     features: ["Fondasi kekuatan & teknik", "Perbaikan postur & range", "Kebiasaan latihan sehat", "Video demo + PDF plan"],
-    href: "https://lynk.id/prps.sport/powerbuilding-foundation",
+    href: "https://lynk.id/prps.sport/q7mn77dz3w7m",
     tags: ["Popular"]
   },
   {
@@ -71,7 +71,7 @@ export const FEATURED_PLANS: Plan[] = [
     environment: "Gym",
     price: "Rp 299.000",
     features: ["Teknik dasar SBD", "Dasar RPE", "Progres beban terukur", "Video cue teknik"],
-    href: "https://lynk.id/prps.sport/push-pull-legs"
+    href: "https://lynk.id/prps.sport/q7mn77dz3w7m",
   },
   {
     id: "beginner-powerlifting",
@@ -82,7 +82,7 @@ export const FEATURED_PLANS: Plan[] = [
     environment: "Home",
     price: "Rp 149.000",
     features: ["Tanpa alat", "Progres bertahap", "Fleksibel waktu", "Video panduan lengkap"],
-    href: "https://lynk.id/prps.sport/beginner-powerlifting"
+    href: "https://lynk.id/prps.sport/q7mn77dz3w7m",
   }
 ]
 
@@ -97,7 +97,7 @@ export const ALL_PLANS: Plan[] = [
     environment: "Gym", 
     price: "$35",
     features: ["Muscle isolation", "High volume", "Aesthetic focus", "Supplement guide"],
-    href: "https://lynk.id/prps.sport/bodybuilding-split"
+    href: "https://lynk.id/prps.sport/q7mn77dz3w7m",
   },
   {
     id: "home-strength",
@@ -108,7 +108,7 @@ export const ALL_PLANS: Plan[] = [
     environment: "Home",
     price: "$18",
     features: ["Bodyweight focused", "Minimal equipment", "Space efficient", "Family friendly"],
-    href: "https://lynk.id/prps.sport/home-strength"
+    href: "https://lynk.id/prps.sport/q7mn77dz3w7m",
   },
   {
     id: "powerlifting-peaking",
@@ -119,7 +119,7 @@ export const ALL_PLANS: Plan[] = [
     environment: "Gym",
     price: "$45",
     features: ["Competition prep", "1RM focus", "Peaking protocol", "Recovery strategies"],
-    href: "https://lynk.id/prps.sport/powerlifting-peaking"
+    href: "https://lynk.id/prps.sport/q7mn77dz3w7m",
   }
 ]
 
