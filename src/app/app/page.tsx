@@ -46,18 +46,42 @@ export default function DashboardPage() {
     setProgram(foundProgram || null);
   };
 
-  const getNextWorkoutDay = (): number | null => {
+  const getNextWorkoutInfo = (): { day: number; name: string; exercises: number; week?: number } | null => {
     if (!program) return null;
     
     const completedDays = getAllDayLogs()
       .filter(log => log.programSlug === program.slug && log.completedAt)
-      .map(log => log.day);
+      .map(log => ({ day: log.day, week: log.week }));
     
-    for (let i = 1; i <= program.days.length; i++) {
-      if (!completedDays.includes(i)) {
-        return i;
+    if (program.weeks) {
+      // Week-based program
+      for (const week of program.weeks) {
+        for (const workout of week.workouts) {
+          const isCompleted = completedDays.some(c => c.day === workout.day && c.week === week.week);
+          if (!isCompleted) {
+            return {
+              day: workout.day,
+              name: workout.name,
+              exercises: workout.exercises.length,
+              week: week.week
+            };
+          }
+        }
+      }
+    } else if (program.days) {
+      // Legacy day-based program
+      for (const workout of program.days) {
+        const isCompleted = completedDays.some(c => c.day === workout.day);
+        if (!isCompleted) {
+          return {
+            day: workout.day,
+            name: workout.name,
+            exercises: workout.exercises.length
+          };
+        }
       }
     }
+    
     return null;
   };
 
@@ -68,11 +92,15 @@ export default function DashboardPage() {
       .filter(log => log.programSlug === program.slug && log.completedAt)
       .length;
     
-    return Math.round((completedDays / program.days.length) * 100);
+    const totalDays = program.weeks ? 
+      program.weeks.reduce((sum, week) => sum + week.workouts.length, 0) :
+      program.days?.length || 0;
+      
+    return Math.round((completedDays / totalDays) * 100);
   };
 
   const xpProgress = getXPProgress(stats.xp);
-  const nextDay = getNextWorkoutDay();
+  const nextWorkout = getNextWorkoutInfo();
   const programProgress = getProgramProgress();
 
   if (!isLoaded) {
@@ -168,18 +196,23 @@ export default function DashboardPage() {
           <CardContent className="space-y-4">
             <Progress value={programProgress} />
             
-            {nextDay ? (
+            {nextWorkout ? (
               <div className="space-y-2">
                 <p className="text-sm font-medium">Next Workout:</p>
                 <div className="flex items-center justify-between p-3 bg-muted rounded-lg">
                   <div>
-                    <p className="font-medium">Day {nextDay}: {program?.days.find(d => d.day === nextDay)?.name}</p>
+                    <p className="font-medium">
+                      {nextWorkout.week ? `Week ${nextWorkout.week} ` : ''}Day {nextWorkout.day}: {nextWorkout.name}
+                    </p>
                     <p className="text-sm text-muted-foreground">
-                      {program?.days.find(d => d.day === nextDay)?.exercises.length} exercises
+                      {nextWorkout.exercises} exercises
                     </p>
                   </div>
                   <Button asChild>
-                    <Link href={`/app/workout/${activeProgram}/${nextDay}`}>
+                    <Link href={nextWorkout.week ? 
+                      `/app/workout/${activeProgram}/${nextWorkout.week}/${nextWorkout.day}` :
+                      `/app/workout/${activeProgram}/${nextWorkout.day}`
+                    }>
                       Lanjutkan
                     </Link>
                   </Button>

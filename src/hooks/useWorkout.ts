@@ -13,12 +13,14 @@ import {
 } from '@/lib/gamification';
 import { parseSets } from '@/lib/fitness';
 
-export function useWorkout(programSlug: string, day: number) {
+export function useWorkout(programSlug: string, day: number, week?: number) {
   const [dayLog, setDayLog] = useState<DayLog | null>(null);
   const [isLoading, setIsLoading] = useState(true);
 
   const today = new Date().toISOString().split('T')[0];
-  const logKey = getDayLogKey(programSlug, day, today);
+  const logKey = week ? 
+    `${programSlug}-w${week}-d${day}-${today}` : 
+    getDayLogKey(programSlug, day, today);
 
   useEffect(() => {
     const existingLog = getStorageItem<DayLog>(logKey);
@@ -30,10 +32,21 @@ export function useWorkout(programSlug: string, day: number) {
       const program = programs.find(p => p.slug === programSlug);
       
       if (program) {
-        const workoutDay = program.days.find(d => d.day === day);
+        let workoutDay = null;
+        
+        if (week && program.weeks) {
+          // Week-based program
+          const workoutWeek = program.weeks.find(w => w.week === week);
+          workoutDay = workoutWeek?.workouts.find(d => d.day === day);
+        } else if (program.days) {
+          // Legacy day-based program
+          workoutDay = program.days.find(d => d.day === day);
+        }
+        
         if (workoutDay) {
           const newDayLog: DayLog = {
             programSlug,
+            week,
             day,
             date: today,
             exerciseLogs: workoutDay.exercises.map((exercise: Exercise) => ({
@@ -49,7 +62,7 @@ export function useWorkout(programSlug: string, day: number) {
       }
     }
     setIsLoading(false);
-  }, [programSlug, day, logKey, today]);
+  }, [programSlug, day, week, logKey, today]);
 
   const updateSetLog = (exerciseIndex: number, setIndex: number, updates: Partial<SetLog>) => {
     if (!dayLog) return;

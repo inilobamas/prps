@@ -58,7 +58,11 @@ export function getNextWorkoutDay(programSlug: string, completedDays: number[]):
   const program = getStorageItem<Program[]>('prps.programs')?.find(p => p.slug === programSlug);
   if (!program) return null;
   
-  for (let i = 1; i <= program.days.length; i++) {
+  const totalDays = program.weeks ? 
+    program.weeks.reduce((sum, week) => sum + week.workouts.length, 0) :
+    program.days?.length || 0;
+    
+  for (let i = 1; i <= totalDays; i++) {
     if (!completedDays.includes(i)) {
       return i;
     }

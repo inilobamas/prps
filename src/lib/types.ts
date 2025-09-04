@@ -12,6 +12,12 @@ export type WorkoutDay = {
   exercises: Exercise[];
 };
 
+export type WorkoutWeek = {
+  week: number;
+  focus?: string;             // e.g. "Volume Accumulation"
+  workouts: WorkoutDay[];
+};
+
 export type Program = {
   slug: string;               // e.g. "beginner-strength"
   title: string;              // e.g. "Beginner Strength (Bodybuilding)"
@@ -19,7 +25,8 @@ export type Program = {
   frequencyPerWeek: number;   // e.g. 3
   level: "Pemula" | "Pemula serius" | "Intermediate" | "Advanced";
   equipment: string;          // quick summary
-  days: WorkoutDay[];         // array of day objects like the user format
+  weeks?: WorkoutWeek[];      // week-based programs (new structure)
+  days?: WorkoutDay[];        // legacy day-based programs (backward compatibility)
 };
 
 // Progress & logs
@@ -39,6 +46,7 @@ export type ExerciseLog = {
 
 export type DayLog = {
   programSlug: string;
+  week?: number;              // for week-based programs
   day: number;
   date: string;               // YYYY-MM-DD
   startedAt?: number;

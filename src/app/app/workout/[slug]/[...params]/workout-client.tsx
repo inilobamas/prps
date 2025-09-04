@@ -10,7 +10,7 @@ import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from '@/
 import { Dialog, DialogContent, DialogHeader, DialogTitle, DialogDescription, DialogFooter } from '@/components/ui/dialog';
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from '@/components/ui/select';
 import { ArrowLeft, CheckCircle2, Circle, Play, Pause, RotateCcw, Trophy, Share } from 'lucide-react';
-import { Program, SetLog, UserStats } from '@/lib/types';
+import { Program, SetLog, UserStats, WorkoutDay } from '@/lib/types';
 import { PROGRAMS } from '@/lib/programs';
 import { useWorkout } from '@/hooks/useWorkout';
 import { useTimer } from '@/hooks/useWorkout';
@@ -57,10 +57,12 @@ function RestTimer({ restString, onComplete }: { restString: string; onComplete?
   );
 }
 
-export function WorkoutPageClient({ slug, day }: { slug: string; day: string }) {
+export function WorkoutPageClient({ slug, week, day }: { slug: string; week?: string; day: string }) {
   const router = useRouter();
+  const weekNumber = week ? parseInt(week) : undefined;
   const dayNumber = parseInt(day);
   const [program, setProgram] = useState<Program | null>(null);
+  const [currentWorkout, setCurrentWorkout] = useState<WorkoutDay | null>(null);
   const [showFinishDialog, setShowFinishDialog] = useState(false);
   const [elapsedTime, setElapsedTime] = useState(0);
   const [startTime, setStartTime] = useState<number | null>(null);
@@ -76,7 +78,7 @@ export function WorkoutPageClient({ slug, day }: { slug: string; day: string }) 
     updateExerciseNotes,
     startWorkout,
     finishWorkout,
-  } = useWorkout(slug, dayNumber);
+  } = useWorkout(slug, dayNumber, weekNumber);
 
   useEffect(() => {
     const foundProgram = PROGRAMS.find(p => p.slug === slug);
@@ -85,14 +87,25 @@ export function WorkoutPageClient({ slug, day }: { slug: string; day: string }) 
       return;
     }
 
-    const workoutDay = foundProgram.days.find(d => d.day === dayNumber);
+    let workoutDay = null;
+    
+    if (weekNumber && foundProgram.weeks) {
+      // Week-based program
+      const workoutWeek = foundProgram.weeks.find(w => w.week === weekNumber);
+      workoutDay = workoutWeek?.workouts.find(d => d.day === dayNumber);
+    } else if (foundProgram.days) {
+      // Legacy day-based program
+      workoutDay = foundProgram.days.find(d => d.day === dayNumber);
+    }
+    
     if (!workoutDay) {
       router.push(`/app/workout/${slug}`);
       return;
     }
 
     setProgram(foundProgram);
-  }, [slug, dayNumber, router]);
+    setCurrentWorkout(workoutDay);
+  }, [slug, weekNumber, dayNumber, router]);
 
   useEffect(() => {
     if (dayLog?.startedAt && !startTime) {
@@ -148,12 +161,14 @@ export function WorkoutPageClient({ slug, day }: { slug: string; day: string }) 
   };
 
   const shareWorkout = () => {
-    const message = `Selesai Day ${dayNumber} (${program?.days.find(d => d.day === dayNumber)?.name}) di PRPS 💪 XP +${dayLog?.xpEarned || 0} — Your plan. Your pace. #KeepShowing`;
+    const workoutName = currentWorkout?.name || 'Workout';
+    const weekText = weekNumber ? `Week ${weekNumber} ` : '';
+    const message = `Selesai ${weekText}Day ${dayNumber} (${workoutName}) di PRPS 💪 XP +${dayLog?.xpEarned || 0} — Your plan. Your pace. #KeepShowing`;
     const url = `https://wa.me/?text=${encodeURIComponent(message)}`;
     window.open(url, '_blank');
   };
 
-  if (isLoading || !program || !dayLog) {
+  if (isLoading || !program || !dayLog || !currentWorkout) {
     return (
       <div className="container mx-auto p-4">
         <div className="space-y-6">
@@ -164,8 +179,7 @@ export function WorkoutPageClient({ slug, day }: { slug: string; day: string }) 
     );
   }
 
-  const currentDay = program.days.find(d => d.day === dayNumber);
-  if (!currentDay) return null;
+  const currentWeek = program.weeks?.find(w => w.week === weekNumber);
 
   return (
     <div className="container mx-auto p-4 pb-24 space-y-6">
@@ -178,9 +192,12 @@ export function WorkoutPageClient({ slug, day }: { slug: string; day: string }) 
           </Link>
         </Button>
         <div className="flex-1">
-          <h1 className="text-xl font-bold">Day {dayNumber} — {currentDay.name}</h1>
+          <h1 className="text-xl font-bold">
+            {weekNumber ? `Week ${weekNumber} ` : ''}Day {dayNumber} — {currentWorkout.name}
+          </h1>
           <p className="text-sm text-muted-foreground">
-            {currentDay.exercises.length} exercises
+            {currentWeek?.focus && `${currentWeek.focus} • `}
+            {currentWorkout.exercises.length} exercises
             {startTime && !isCompleted && ` • ${formatDuration(elapsedTime)}`}
           </p>
         </div>
@@ -193,8 +210,8 @@ export function WorkoutPageClient({ slug, day }: { slug: string; day: string }) 
       </div>
 
       {/* Exercises */}
-      <Accordion type="multiple" defaultValue={currentDay.exercises.map((_, i) => `exercise-${i}`)}>
-        {currentDay.exercises.map((exercise, exerciseIndex) => {
+      <Accordion type="multiple" defaultValue={currentWorkout.exercises.map((_, i) => `exercise-${i}`)}>
+        {currentWorkout.exercises.map((exercise, exerciseIndex) => {
           const exerciseLog = dayLog.exerciseLogs[exerciseIndex];
           const completedSets = exerciseLog?.setLogs.filter(set => set.completed).length || 0;
           const totalSets = exerciseLog?.setLogs.length || 0;
@@ -339,7 +356,7 @@ export function WorkoutPageClient({ slug, day }: { slug: string; day: string }) 
             {startTime && !isCompleted ? (
               <span>Time: {formatDuration(elapsedTime)}</span>
             ) : (
-              <span>{currentDay.exercises.length} exercises</span>
+              <span>{currentWorkout.exercises.length} exercises</span>
             )}
           </div>
           

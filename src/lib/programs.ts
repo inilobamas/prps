@@ -3,25 +3,55 @@ import { FEATURED_PLANS } from './constants';
 import { getStorageItem, setStorageItem, STORAGE_KEYS } from './storage';
 
 // Convert existing plans to workout programs
-export const PROGRAMS: Program[] = FEATURED_PLANS.map(plan => ({
-  slug: plan.id,
-  title: plan.title,
-  durationWeeks: plan.durationWeeks,
-  frequencyPerWeek: parseInt(plan.daysPerWeek.split('x')[0]),
-  level: plan.level,
-  equipment: plan.equipment?.join(', ') || 'Standard gym equipment',
-  days: plan.workoutOverview?.[0]?.workouts.map(workout => ({
-    day: workout.day,
-    name: workout.name,
-    exercises: workout.exercises.map(exercise => ({
-      name: exercise.name,
-      sets: exercise.sets,
-      reps: exercise.reps,
-      rest: exercise.rest,
-      notes: exercise.notes,
-    }))
-  })) || []
-})).filter(program => program.days.length > 0);
+export const PROGRAMS: Program[] = FEATURED_PLANS.map(plan => {
+  // Check if plan has multiple weeks (week-based structure)
+  if (plan.workoutOverview && plan.workoutOverview.length > 1) {
+    return {
+      slug: plan.id,
+      title: plan.title,
+      durationWeeks: plan.durationWeeks,
+      frequencyPerWeek: parseInt(plan.daysPerWeek.split('x')[0]),
+      level: plan.level,
+      equipment: plan.equipment?.join(', ') || 'Standard gym equipment',
+      weeks: plan.workoutOverview.map(weekData => ({
+        week: weekData.week,
+        focus: weekData.focus,
+        workouts: weekData.workouts.map(workout => ({
+          day: workout.day,
+          name: workout.name,
+          exercises: workout.exercises.map(exercise => ({
+            name: exercise.name,
+            sets: exercise.sets,
+            reps: exercise.reps,
+            rest: exercise.rest,
+            notes: exercise.notes,
+          }))
+        }))
+      }))
+    };
+  }
+  
+  // Fallback to legacy day-based structure
+  return {
+    slug: plan.id,
+    title: plan.title,
+    durationWeeks: plan.durationWeeks,
+    frequencyPerWeek: parseInt(plan.daysPerWeek.split('x')[0]),
+    level: plan.level,
+    equipment: plan.equipment?.join(', ') || 'Standard gym equipment',
+    days: plan.workoutOverview?.[0]?.workouts.map(workout => ({
+      day: workout.day,
+      name: workout.name,
+      exercises: workout.exercises.map(exercise => ({
+        name: exercise.name,
+        sets: exercise.sets,
+        reps: exercise.reps,
+        rest: exercise.rest,
+        notes: exercise.notes,
+      }))
+    })) || []
+  };
+}).filter(program => (program.weeks && program.weeks.length > 0) || (program.days && program.days.length > 0));
 
 // Add a simple beginner program for better user experience
 PROGRAMS.push({
