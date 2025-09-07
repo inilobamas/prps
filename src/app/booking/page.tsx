@@ -22,10 +22,12 @@ export default function BookingPage() {
   const [priceRange, setPriceRange] = useState<string>("all")
   const [userLocation, setUserLocationState] = useState<UserLocation | null>(null)
   const [showLocationModal, setShowLocationModal] = useState(false)
-  const [showAllCities, setShowAllCities] = useState(false)
+  const [showAllCities, setShowAllCities] = useState(true) // Default to true to match server
+  const [isClient, setIsClient] = useState(false)
 
   // Load user location on mount
   useEffect(() => {
+    setIsClient(true)
     const location = getUserLocation()
     const preference = getLocationPreference()
     setUserLocationState(location)
@@ -37,12 +39,12 @@ export default function BookingPage() {
     }
   }, [])
 
-  // Get location-based filtered trainers
+  // Get location-based filtered trainers (use default values during SSR)
   const { nearbyTrainers, otherTrainers } = filterTrainersByLocation(
     PT_BOOKING_TRAINERS,
-    userLocation || undefined,
+    isClient ? userLocation || undefined : undefined,
     undefined,
-    showAllCities
+    isClient ? showAllCities : true
   )
 
   // Get unique locations based on user's city priority
@@ -102,45 +104,47 @@ export default function BookingPage() {
             </p>
             
             {/* Location Display & Controls */}
-            <div className="mt-6 flex items-center justify-center gap-4">
-              {userLocation ? (
-                <div className="flex items-center gap-2 px-3 py-1 bg-green-50 border border-green-200 rounded-full">
-                  <MapPin className="h-4 w-4 text-green-600" />
-                  <span className="text-sm font-medium text-green-700">
-                    {userLocation.city}
-                  </span>
+            {isClient && (
+              <div className="mt-6 flex items-center justify-center gap-4">
+                {userLocation ? (
+                  <div className="flex items-center gap-2 px-3 py-1 bg-green-50 border border-green-200 rounded-full">
+                    <MapPin className="h-4 w-4 text-green-600" />
+                    <span className="text-sm font-medium text-green-700">
+                      {userLocation.city}
+                    </span>
+                    <Button
+                      variant="ghost"
+                      size="sm"
+                      className="h-6 w-6 p-0 text-green-600 hover:text-green-700"
+                      onClick={() => setShowLocationModal(true)}
+                    >
+                      <Settings className="h-3 w-3" />
+                    </Button>
+                  </div>
+                ) : (
+                  <Button
+                    variant="outline"
+                    onClick={() => setShowLocationModal(true)}
+                    className="flex items-center gap-2"
+                  >
+                    <Target className="h-4 w-4" />
+                    Set Your Location
+                  </Button>
+                )}
+                
+                {otherTrainers.length > 0 && (
                   <Button
                     variant="ghost"
                     size="sm"
-                    className="h-6 w-6 p-0 text-green-600 hover:text-green-700"
-                    onClick={() => setShowLocationModal(true)}
+                    onClick={() => setShowAllCities(!showAllCities)}
+                    className="flex items-center gap-2"
                   >
-                    <Settings className="h-3 w-3" />
+                    <Filter className="h-4 w-4" />
+                    {showAllCities ? "Show Nearby Only" : "Show All Cities"}
                   </Button>
-                </div>
-              ) : (
-                <Button
-                  variant="outline"
-                  onClick={() => setShowLocationModal(true)}
-                  className="flex items-center gap-2"
-                >
-                  <Target className="h-4 w-4" />
-                  Set Your Location
-                </Button>
-              )}
-              
-              {otherTrainers.length > 0 && (
-                <Button
-                  variant="ghost"
-                  size="sm"
-                  onClick={() => setShowAllCities(!showAllCities)}
-                  className="flex items-center gap-2"
-                >
-                  <Filter className="h-4 w-4" />
-                  {showAllCities ? "Show Nearby Only" : "Show All Cities"}
-                </Button>
-              )}
-            </div>
+                )}
+              </div>
+            )}
           </div>
 
           {/* Filters */}

@@ -50,9 +50,14 @@ export function LocationModal({ isOpen, onClose, onLocationSet }: LocationModalP
   const [suggestions, setSuggestions] = useState<string[]>([])
   const [isDetecting, setIsDetecting] = useState(false)
   const [step, setStep] = useState<"location" | "preferences">("location")
+  const [isClient, setIsClient] = useState(false)
 
   useEffect(() => {
-    if (isOpen) {
+    setIsClient(true)
+  }, [])
+
+  useEffect(() => {
+    if (isOpen && isClient) {
       const userLocation = getUserLocation()
       const preference = getLocationPreference()
       setCurrentLocation(userLocation)
@@ -62,7 +67,7 @@ export function LocationModal({ isOpen, onClose, onLocationSet }: LocationModalP
         setSearchQuery(userLocation.city)
       }
     }
-  }, [isOpen])
+  }, [isOpen, isClient])
 
   useEffect(() => {
     if (searchQuery.length > 0) {
@@ -155,7 +160,7 @@ export function LocationModal({ isOpen, onClose, onLocationSet }: LocationModalP
               <Button 
                 variant="outline" 
                 onClick={handleDetectLocation}
-                disabled={isDetecting}
+                disabled={!isClient || isDetecting}
                 className="w-full"
               >
                 <Target className="h-4 w-4 mr-2" />
@@ -317,7 +322,7 @@ export function LocationModal({ isOpen, onClose, onLocationSet }: LocationModalP
           {step === "location" ? (
             <Button 
               onClick={currentLocation ? handleNext : undefined}
-              disabled={!currentLocation}
+              disabled={!isClient || !currentLocation}
               className="flex-1"
             >
               {currentLocation ? "Next" : "Select Location First"}
