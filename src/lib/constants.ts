@@ -1089,7 +1089,7 @@ export const PT_BOOKING_TRAINERS: TrainerBookingProfile[] = [
     groupSessionRate: 100000,
     assessmentRate: 100000,
     consultationRate: 75000,
-    locations: ["Taman Singha Merjosari", "Stadion Kanjuruhan", "Online"],
+    locations: ["Taman Singha Merjosari", "Stadion Kanjuruhan", "Fit Zone Surabaya", "Online"],
     availability: [],
     totalBookings: 412,
     completedSessions: 394,
@@ -1121,7 +1121,7 @@ export const PT_BOOKING_TRAINERS: TrainerBookingProfile[] = [
     groupSessionRate: 125000,
     assessmentRate: 125000,
     consultationRate: 75000,
-    locations: ["Boxing Arena Malang", "Combat Sports Center", "Online"],
+    locations: ["Boxing Arena Malang", "Combat Sports Center", "Fit Zone Surabaya", "Online"],
     availability: [],
     totalBookings: 189,
     completedSessions: 176,
@@ -1153,7 +1153,7 @@ export const PT_BOOKING_TRAINERS: TrainerBookingProfile[] = [
     groupSessionRate: 110000,
     assessmentRate: 120000,
     consultationRate: 80000,
-    locations: ["Athletic Performance Center", "Speed Academy Malang", "Online"],
+    locations: ["Athletic Performance Center Jakarta", "Speed Academy Malang", "Online"],
     availability: [],
     totalBookings: 134,
     completedSessions: 127,
@@ -1216,6 +1216,52 @@ export const GYM_PARTNERS: GymPartner[] = [
     rating: 4.8,
     totalBookings: 203,
     joinDate: "2019-05-20"
+  },
+  {
+    id: "fit-zone-surabaya",
+    name: "Fit Zone Surabaya",
+    address: "Jl. HR Muhammad No. 123, Gubeng",
+    city: "Surabaya",
+    phone: "0312-345678",
+    email: "info@fitzone.co.id",
+    trainers: ["trainer-rio", "trainer-dimas"],
+    commissionRate: 22,
+    facilities: ["Running Track", "Boxing Ring", "CrossFit Area", "Swimming Pool"],
+    operatingHours: {
+      "monday": { open: "05:00", close: "22:00" },
+      "tuesday": { open: "05:00", close: "22:00" },
+      "wednesday": { open: "05:00", close: "22:00" },
+      "thursday": { open: "05:00", close: "22:00" },
+      "friday": { open: "05:00", close: "22:00" },
+      "saturday": { open: "06:00", close: "21:00" },
+      "sunday": { open: "07:00", close: "20:00" }
+    },
+    rating: 4.6,
+    totalBookings: 178,
+    joinDate: "2021-06-10"
+  },
+  {
+    id: "athletic-center-jakarta",
+    name: "Athletic Performance Center Jakarta",
+    address: "Jl. Sudirman Kav. 25, Senayan",
+    city: "Jakarta",
+    phone: "021-7654321",
+    email: "jakarta@athleticperformance.id",
+    trainers: ["trainer-fitri"],
+    commissionRate: 30,
+    facilities: ["Speed Track", "Plyometric Area", "Recovery Center", "Sports Lab"],
+    operatingHours: {
+      "monday": { open: "05:00", close: "23:00" },
+      "tuesday": { open: "05:00", close: "23:00" },
+      "wednesday": { open: "05:00", close: "23:00" },
+      "thursday": { open: "05:00", close: "23:00" },
+      "friday": { open: "05:00", close: "23:00" },
+      "saturday": { open: "06:00", close: "22:00" },
+      "sunday": { open: "07:00", close: "21:00" }
+    },
+    rating: 4.9,
+    totalBookings: 89,
+    joinDate: "2022-01-15"
   }
 ]
 
@@ -1250,3 +1296,36 @@ export const SESSION_TYPES: {
     duration: 30
   }
 ]
+
+// Location & Cities Data
+export const CITIES = [
+  {
+    name: "Malang",
+    coordinates: { lat: -7.9797, lng: 112.6304 },
+    gyms: ["Iron House Gym Malang", "Gold's Gym Malang", "Speed Academy Malang"]
+  },
+  {
+    name: "Surabaya", 
+    coordinates: { lat: -7.2504, lng: 112.7688 },
+    gyms: ["Fit Zone Surabaya"]
+  },
+  {
+    name: "Jakarta",
+    coordinates: { lat: -6.2088, lng: 106.8456 },
+    gyms: ["Athletic Performance Center Jakarta"]
+  }
+] as const
+
+// Location mapping for trainers
+export const LOCATION_CITY_MAP: Record<string, string> = {
+  "Iron House Gym Malang": "Malang",
+  "Gold's Gym Malang": "Malang", 
+  "Speed Academy Malang": "Malang",
+  "Fit Zone Surabaya": "Surabaya",
+  "Athletic Performance Center Jakarta": "Jakarta",
+  "Taman Singha Merjosari": "Malang",
+  "Stadion Kanjuruhan": "Malang",
+  "Boxing Arena Malang": "Malang",
+  "Combat Sports Center": "Malang",
+  "Online": "Online"
+}

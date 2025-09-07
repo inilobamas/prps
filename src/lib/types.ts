@@ -79,6 +79,24 @@ export type Settings = {
   theme?: "light" | "dark" | "system";
 };
 
+// User Location Types
+export type UserLocation = {
+  city: string;
+  district?: string;
+  coordinates?: {
+    lat: number;
+    lng: number;
+  };
+  detectedAt: string; // ISO timestamp
+  isManuallySet: boolean;
+};
+
+export type LocationPreference = {
+  preferredLocations: string[]; // gym/location names
+  maxDistance: number; // in km
+  showAllLocations: boolean; // whether to show trainers from other cities
+};
+
 // Personal Trainer Features
 export type Client = {
   id: string;

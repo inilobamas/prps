@@ -1,4 +1,4 @@
-import { DayLog, UserStats, Settings, Booking, TrainerAvailability, UserBookingProfile } from './types';
+import { DayLog, UserStats, Settings, Booking, TrainerAvailability, UserBookingProfile, UserLocation, LocationPreference } from './types';
 
 const STORAGE_VERSION = 1;
 
@@ -11,6 +11,8 @@ export const STORAGE_KEYS = {
   BOOKINGS: 'prps.bookings',
   USER_BOOKING_PROFILE: 'prps.userBookingProfile',
   TRAINER_AVAILABILITY: 'prps.trainerAvailability',
+  USER_LOCATION: 'prps.userLocation',
+  LOCATION_PREFERENCE: 'prps.locationPreference',
 } as const;
 
 export function getDayLogKey(programSlug: string, day: number, date: string): string {
@@ -189,4 +191,31 @@ export function setTrainerAvailability(trainerId: string, availability: TrainerA
   const allAvailability = getStorageItem<Record<string, TrainerAvailability[]>>(STORAGE_KEYS.TRAINER_AVAILABILITY) || {};
   allAvailability[trainerId] = availability;
   setStorageItem(STORAGE_KEYS.TRAINER_AVAILABILITY, allAvailability);
+}
+
+// Location Storage Functions
+export function getUserLocation(): UserLocation | null {
+  return getStorageItem<UserLocation>(STORAGE_KEYS.USER_LOCATION);
+}
+
+export function setUserLocation(location: UserLocation): void {
+  setStorageItem(STORAGE_KEYS.USER_LOCATION, location);
+}
+
+export function getLocationPreference(): LocationPreference {
+  return getStorageItem<LocationPreference>(STORAGE_KEYS.LOCATION_PREFERENCE) || {
+    preferredLocations: [],
+    maxDistance: 10, // 10km default
+    showAllLocations: true
+  };
+}
+
+export function setLocationPreference(preference: LocationPreference): void {
+  setStorageItem(STORAGE_KEYS.LOCATION_PREFERENCE, preference);
+}
+
+export function updateLocationPreference(updates: Partial<LocationPreference>): void {
+  const current = getLocationPreference();
+  const updated = { ...current, ...updates };
+  setLocationPreference(updated);
 }
