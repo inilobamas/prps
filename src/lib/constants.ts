@@ -1002,3 +1002,251 @@ export const FAQ_ITEMS = [
     answer: "Tentu! Join grup WhatsApp dan follow Instagram @prps_sport untuk tips, motivasi, dan tanya-jawab."
   }
 ]
+
+// PT Booking Data
+import type { TrainerBookingProfile, GymPartner, TrainerAvailability, SessionType } from './types'
+
+export const PT_BOOKING_TRAINERS: TrainerBookingProfile[] = [
+  {
+    id: "trainer-andi",
+    name: "Coach Andi Prasetya",
+    email: "andi@prps.sport",
+    specializations: ["Powerlifting", "Strength Training", "Competition Prep"],
+    certifications: ["CSCS", "Powerlifting Coach Level 2"],
+    yearsExperience: 8,
+    bio: "8 tahun coaching powerlifting & strength training. Alumni juara Jatim Powerlifting Championship. Spesialis dalam teknik SBD dan program peaking untuk kompetisi.",
+    profileImage: "/images/trainer-andi.jpg",
+    commissionRate: 70,
+    totalClients: 45,
+    totalRevenue: 85000000,
+    rating: 4.9,
+    joinDate: "2020-01-15",
+    hourlyRate: 200000,
+    groupSessionRate: 150000,
+    assessmentRate: 150000,
+    consultationRate: 100000,
+    locations: ["Iron House Gym Malang", "Powerlifting Indonesia Malang", "Online"],
+    availability: [],
+    totalBookings: 324,
+    completedSessions: 298,
+    cancelledSessions: 12,
+    averageRating: 4.8,
+    reviewCount: 89,
+    isActive: true,
+    responseTime: "Usually responds within 1 hour",
+    languages: ["Indonesian", "English"],
+    equipment: ["Barbell Olympic", "Power Rack", "Competition Platform"],
+    maxAdvanceBooking: 30,
+    cancellationPolicy: "24 jam sebelum sesi untuk full refund"
+  },
+  {
+    id: "trainer-sari",
+    name: "Coach Sari Indrawati",
+    email: "sari@prps.sport", 
+    specializations: ["Bodybuilding", "Aesthetic Training", "Contest Prep"],
+    certifications: ["CPT", "IFBB Judge"],
+    yearsExperience: 6,
+    bio: "6 tahun experience bodybuilding coaching. Mantan atlet bikini fitness nasional. Expert dalam cutting, bulking, dan persiapan kontes aesthetic.",
+    profileImage: "/images/trainer-sari.jpg",
+    commissionRate: 70,
+    totalClients: 38,
+    totalRevenue: 72000000,
+    rating: 4.9,
+    joinDate: "2021-03-20",
+    hourlyRate: 180000,
+    groupSessionRate: 120000,
+    assessmentRate: 150000,
+    consultationRate: 100000,
+    locations: ["Gold's Gym Malang", "Ladies Fitness Studio", "Online"],
+    availability: [],
+    totalBookings: 256,
+    completedSessions: 239,
+    cancelledSessions: 8,
+    averageRating: 4.9,
+    reviewCount: 67,
+    isActive: true,
+    responseTime: "Usually responds within 2 hours",
+    languages: ["Indonesian"],
+    equipment: ["Dumbbells", "Cable Machine", "Posing Mirror"],
+    maxAdvanceBooking: 21,
+    cancellationPolicy: "12 jam sebelum sesi untuk full refund"
+  },
+  {
+    id: "trainer-rio",
+    name: "Coach Rio Mahendra",
+    email: "rio@prps.sport",
+    specializations: ["Distance Running", "Marathon Training", "Endurance"],
+    certifications: ["Running Coach Certified", "Marathon Sub 3:00"],
+    yearsExperience: 10,
+    bio: "10 tahun coaching runners dari 5K sampai ultra marathon. PB marathon 2:58. Spesialis dalam periodisasi training dan race strategy.",
+    profileImage: "/images/trainer-rio.jpg",
+    commissionRate: 70,
+    totalClients: 52,
+    totalRevenue: 65000000,
+    rating: 4.8,
+    joinDate: "2019-08-10",
+    hourlyRate: 150000,
+    groupSessionRate: 100000,
+    assessmentRate: 100000,
+    consultationRate: 75000,
+    locations: ["Taman Singha Merjosari", "Stadion Kanjuruhan", "Online"],
+    availability: [],
+    totalBookings: 412,
+    completedSessions: 394,
+    cancelledSessions: 15,
+    averageRating: 4.8,
+    reviewCount: 98,
+    isActive: true,
+    responseTime: "Usually responds within 3 hours",
+    languages: ["Indonesian", "English"],
+    equipment: ["GPS Watch", "Running Analysis"],
+    maxAdvanceBooking: 14,
+    cancellationPolicy: "6 jam sebelum sesi untuk full refund"
+  },
+  {
+    id: "trainer-dimas",
+    name: "Coach Dimas Putra",
+    email: "dimas@prps.sport",
+    specializations: ["Boxing", "Combat Sports", "Self Defense"],
+    certifications: ["Boxing Coach License", "Muay Thai Instructor"],
+    yearsExperience: 7,
+    bio: "7 tahun coaching boxing & muay thai. Mantan atlet tinju PON Jawa Timur. Spesialis teknik dasar hingga advanced combat training.",
+    profileImage: "/images/trainer-dimas.jpg",
+    commissionRate: 70,
+    totalClients: 34,
+    totalRevenue: 58000000,
+    rating: 4.7,
+    joinDate: "2020-11-05",
+    hourlyRate: 175000,
+    groupSessionRate: 125000,
+    assessmentRate: 125000,
+    consultationRate: 75000,
+    locations: ["Boxing Arena Malang", "Combat Sports Center", "Online"],
+    availability: [],
+    totalBookings: 189,
+    completedSessions: 176,
+    cancelledSessions: 9,
+    averageRating: 4.7,
+    reviewCount: 43,
+    isActive: true,
+    responseTime: "Usually responds within 4 hours",
+    languages: ["Indonesian"],
+    equipment: ["Heavy Bag", "Boxing Gloves", "Pads"],
+    maxAdvanceBooking: 14,
+    cancellationPolicy: "12 jam sebelum sesi untuk full refund"
+  },
+  {
+    id: "trainer-fitri",
+    name: "Coach Fitri Ramadhani", 
+    email: "fitri@prps.sport",
+    specializations: ["Speed Training", "Athletic Performance", "Sports Conditioning"],
+    certifications: ["Speed & Agility Specialist", "Athletic Performance Coach"],
+    yearsExperience: 5,
+    bio: "5 tahun coaching athletes dari berbagai sport. Spesialis speed & power development untuk performance enhancement.",
+    profileImage: "/images/trainer-fitri.jpg",
+    commissionRate: 70,
+    totalClients: 29,
+    totalRevenue: 45000000,
+    rating: 4.8,
+    joinDate: "2022-02-14",
+    hourlyRate: 160000,
+    groupSessionRate: 110000,
+    assessmentRate: 120000,
+    consultationRate: 80000,
+    locations: ["Athletic Performance Center", "Speed Academy Malang", "Online"],
+    availability: [],
+    totalBookings: 134,
+    completedSessions: 127,
+    cancelledSessions: 5,
+    averageRating: 4.8,
+    reviewCount: 31,
+    isActive: true,
+    responseTime: "Usually responds within 2 hours",
+    languages: ["Indonesian", "English"],
+    equipment: ["Agility Ladder", "Resistance Bands", "Plyometric Boxes"],
+    maxAdvanceBooking: 21,
+    cancellationPolicy: "24 jam sebelum sesi untuk full refund"
+  }
+]
+
+export const GYM_PARTNERS: GymPartner[] = [
+  {
+    id: "iron-house-malang",
+    name: "Iron House Gym Malang",
+    address: "Jl. Veteran No. 45, Lowokwaru",
+    city: "Malang",
+    phone: "0341-567890",
+    email: "info@ironhousemalang.com",
+    website: "www.ironhousemalang.com",
+    trainers: ["trainer-andi"],
+    commissionRate: 20,
+    facilities: ["Olympic Platform", "Power Racks", "Full Dumbbells", "Cardio Zone"],
+    operatingHours: {
+      "monday": { open: "05:00", close: "22:00" },
+      "tuesday": { open: "05:00", close: "22:00" },
+      "wednesday": { open: "05:00", close: "22:00" },
+      "thursday": { open: "05:00", close: "22:00" },
+      "friday": { open: "05:00", close: "22:00" },
+      "saturday": { open: "06:00", close: "21:00" },
+      "sunday": { open: "07:00", close: "20:00" }
+    },
+    rating: 4.7,
+    totalBookings: 145,
+    joinDate: "2020-01-15"
+  },
+  {
+    id: "golds-gym-malang", 
+    name: "Gold's Gym Malang",
+    address: "Jl. Raya Tlogomas No. 18",
+    city: "Malang",
+    phone: "0341-432109",
+    email: "malang@goldsgym.co.id",
+    trainers: ["trainer-sari"],
+    commissionRate: 25,
+    facilities: ["Full Equipment", "Group Class Studio", "Sauna", "Pool"],
+    operatingHours: {
+      "monday": { open: "05:00", close: "23:00" },
+      "tuesday": { open: "05:00", close: "23:00" },
+      "wednesday": { open: "05:00", close: "23:00" },
+      "thursday": { open: "05:00", close: "23:00" },
+      "friday": { open: "05:00", close: "23:00" },
+      "saturday": { open: "06:00", close: "22:00" },
+      "sunday": { open: "07:00", close: "21:00" }
+    },
+    rating: 4.8,
+    totalBookings: 203,
+    joinDate: "2019-05-20"
+  }
+]
+
+export const SESSION_TYPES: { 
+  type: SessionType; 
+  name: string; 
+  description: string; 
+  duration: number; // minutes
+}[] = [
+  {
+    type: "personal-training",
+    name: "Personal Training",
+    description: "1-on-1 intensive training session with personalized program",
+    duration: 60
+  },
+  {
+    type: "group-session",
+    name: "Group Session", 
+    description: "Small group training (2-4 people) with shared goals",
+    duration: 60
+  },
+  {
+    type: "assessment",
+    name: "Fitness Assessment",
+    description: "Complete fitness evaluation and program planning",
+    duration: 90
+  },
+  {
+    type: "consultation",
+    name: "Consultation",
+    description: "Diet, program, and goal-setting discussion",
+    duration: 30
+  }
+]

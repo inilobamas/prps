@@ -1,4 +1,4 @@
-import { DayLog, UserStats, Settings } from './types';
+import { DayLog, UserStats, Settings, Booking, TrainerAvailability, UserBookingProfile } from './types';
 
 const STORAGE_VERSION = 1;
 
@@ -8,6 +8,9 @@ export const STORAGE_KEYS = {
   STATS: 'prps.stats',
   SETTINGS: 'prps.settings',
   VERSION: 'prps.version',
+  BOOKINGS: 'prps.bookings',
+  USER_BOOKING_PROFILE: 'prps.userBookingProfile',
+  TRAINER_AVAILABILITY: 'prps.trainerAvailability',
 } as const;
 
 export function getDayLogKey(programSlug: string, day: number, date: string): string {
@@ -128,4 +131,62 @@ export function importData(jsonString: string): boolean {
     console.error('Error importing data:', error);
     return false;
   }
+}
+
+// Booking Storage Functions
+export function getAllBookings(): Booking[] {
+  return getStorageItem<Booking[]>(STORAGE_KEYS.BOOKINGS) || [];
+}
+
+export function addBooking(booking: Booking): void {
+  const bookings = getAllBookings();
+  bookings.push(booking);
+  setStorageItem(STORAGE_KEYS.BOOKINGS, bookings);
+}
+
+export function updateBooking(bookingId: string, updates: Partial<Booking>): boolean {
+  const bookings = getAllBookings();
+  const index = bookings.findIndex(b => b.id === bookingId);
+  
+  if (index === -1) return false;
+  
+  bookings[index] = { ...bookings[index], ...updates };
+  setStorageItem(STORAGE_KEYS.BOOKINGS, bookings);
+  return true;
+}
+
+export function getBookingById(bookingId: string): Booking | null {
+  const bookings = getAllBookings();
+  return bookings.find(b => b.id === bookingId) || null;
+}
+
+export function getBookingsByTrainer(trainerId: string): Booking[] {
+  const bookings = getAllBookings();
+  return bookings.filter(b => b.trainerId === trainerId);
+}
+
+export function getBookingsByUser(userId: string): Booking[] {
+  const bookings = getAllBookings();
+  return bookings.filter(b => b.userId === userId);
+}
+
+export function getUserBookingProfile(): UserBookingProfile | null {
+  return getStorageItem<UserBookingProfile>(STORAGE_KEYS.USER_BOOKING_PROFILE);
+}
+
+export function updateUserBookingProfile(profile: Partial<UserBookingProfile>): void {
+  const current = getUserBookingProfile();
+  const updated = current ? { ...current, ...profile } : profile;
+  setStorageItem(STORAGE_KEYS.USER_BOOKING_PROFILE, updated);
+}
+
+export function getTrainerAvailability(trainerId: string): TrainerAvailability[] {
+  const availability = getStorageItem<Record<string, TrainerAvailability[]>>(STORAGE_KEYS.TRAINER_AVAILABILITY) || {};
+  return availability[trainerId] || [];
+}
+
+export function setTrainerAvailability(trainerId: string, availability: TrainerAvailability[]): void {
+  const allAvailability = getStorageItem<Record<string, TrainerAvailability[]>>(STORAGE_KEYS.TRAINER_AVAILABILITY) || {};
+  allAvailability[trainerId] = availability;
+  setStorageItem(STORAGE_KEYS.TRAINER_AVAILABILITY, allAvailability);
 }
